@@ -79,9 +79,10 @@ const handleDarkMode = () => {
   document
     .querySelectorAll("a")
     .forEach((element) => (element.style.color = blueColor1));
-  document.querySelectorAll("ul").forEach((element) => {
-    element.style.color = lightText;
-  });
+  document.querySelectorAll("ul") &&
+    document.querySelectorAll("ul").forEach((element) => {
+      element.style.color = lightText;
+    });
 
   document
     .querySelectorAll(".second-level-menu-list li.backLava")
@@ -90,6 +91,7 @@ const handleDarkMode = () => {
   document.querySelectorAll("li.current").forEach((element) => {
     element.style.borderBottom = `3px solid ${blueColor1}`;
   });
+
   document
     .querySelectorAll(".topic .title a, .title a, .title p")
     .forEach((element) => {
@@ -99,21 +101,26 @@ const handleDarkMode = () => {
   document.querySelectorAll("div.ttypography a").forEach((element) => {
     element.style.color = `${blueColor1}`;
   });
+
   // not sure
   document.querySelectorAll(".user-black").forEach((element) => {
     element.style.color = `${blueColor1}`;
   });
+
   document.querySelectorAll(".menu-list li a").forEach((element) => {
     element.style.color = `${lightText}`;
   });
 
-  document.querySelector("#pageContent").style.color = "#ffffff";
+  document.querySelector("#pageContent") &&
+    (document.querySelector("#pageContent").style.color = "#ffffff");
 
   // footer ==========================
-  document.querySelector(
-    "#footer"
-  ).style.borderTop = `1px solid ${borderColor1}`;
-  document.querySelector("#footer a img").style.borderRadius = `50%`;
+  document.querySelector("#footer") &&
+    (document.querySelector(
+      "#footer"
+    ).style.borderTop = `1px solid ${borderColor1}`);
+  document.querySelector("#footer a img") &&
+    (document.querySelector("#footer a img").style.borderRadius = `50%`);
 
   // not sure
   document.querySelectorAll("a").forEach((element) => {
@@ -128,6 +135,7 @@ const handleDarkMode = () => {
     element.style.color = `1px solid ${blueColor1}`;
     element.style.background = themeColor;
   });
+
   document.querySelectorAll(".roundbox .dark").forEach((element) => {
     element.style.background = themeColor2;
   });
@@ -136,14 +144,17 @@ const handleDarkMode = () => {
     element.style.padding = "2px 4px";
     element.style.fontSize = "14px";
   });
+
   document.querySelectorAll(".rated-user.user-legendary").forEach((element) => {
     element.style.padding = "4px 8px";
     element.style.margin = "2px 0";
     element.style.background = "#ffffff";
   });
+
   document.querySelectorAll(".bottom-links").forEach((element) => {
     element.style.background = themeColor2;
   });
+
   document.querySelectorAll(".bottom-links tr").forEach((element) => {
     element.style.padding = "4px 8px";
     element.querySelectorAll("a").forEach((item) => {
@@ -152,13 +163,13 @@ const handleDarkMode = () => {
       item.style.padding = "2px";
     });
   });
+
   document.querySelectorAll(".caption.titled").forEach((element) => {
     element.style.color = blueColor1;
   });
 
   document.querySelectorAll(".bordertable tr").forEach((item) => {
     item.style.color = lightText;
-    // item.style.background = themeColor;
     item.addEventListener("mouseenter", (e) => {
       item.style.color = themeColor;
       item.style.background = `${themeColor2} !important`;
@@ -179,6 +190,7 @@ const handleDarkMode = () => {
       item.style.textShadow = "none";
     });
   });
+
   document
     .querySelectorAll(".contest-state-regular")
     .forEach((element) => (element.color = whiteText));
@@ -186,11 +198,13 @@ const handleDarkMode = () => {
   document.querySelectorAll(".datatable").forEach((element) => {
     element.style.background = themeColor3;
   });
+
   document.querySelectorAll(".datatable tr").forEach((element) => {
     element.style.background = themeColor;
     element.style.border = `1px solid ${borderColor1}`;
     element.style.color = lightText;
   });
+
   document.querySelectorAll(".datatable td").forEach((element) => {
     element
       .querySelectorAll(".groupName")
@@ -254,5 +268,20 @@ const handleDarkMode = () => {
     .forEach((element) => {
       element.style.setProperty("background", blueColor1);
     });
+
+  document.querySelectorAll(".nav-links li a").forEach((item) => {
+    item.style.fontSize = "14px";
+    item.style.padding = "3px 0";
+  });
+  document.querySelectorAll(".user-gray").forEach((element) => {
+    element.style.setProperty("color", lightText);
+  });
+
+  document.querySelectorAll(".bell-details").forEach((element) => {
+    element.style.background = themeColor;
+    element.querySelectorAll("bell-details__no-new").forEach((element) => {
+      element.style.color = lightText;
+    });
+  });
 };
 handleDarkMode();
