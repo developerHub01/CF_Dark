@@ -1,0 +1,17 @@
+{
+  "manifest_version": 3,
+  "name": "CF Dark",
+  "version": "1.0",
+  "description": "CF Dark",
+  "permissions": ["activeTab", "storage"],
+  "content_scripts": [
+    {
+      "matches": ["https://codeforces.com/*"],
+      "js": ["content.js"]
+    }
+  ],
+  "action": {
+    "default_popup": "popup.html",
+    "default_icon": {}
+  }
+}
