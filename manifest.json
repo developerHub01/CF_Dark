@@ -11,6 +11,18 @@
     }
   ],
   "action": {
-    "default_icon": {}
+    "default_icon": {
+      "128": "images/assets/128.png",
+      "32": "images/assets/32.png",
+      "24": "images/assets/24.png",
+      "16": "images/assets/16.png"
+    },
+    "default_title": "CF Dark"
+  },
+  "icons": {
+    "128": "images/assets/128.png",
+    "32": "images/assets/32.png",
+    "24": "images/assets/24.png",
+    "16": "images/assets/16.png"
   }
 }
