@@ -15,6 +15,7 @@ const sortIcon = "https://i.ibb.co/W6RC8qW/sortIcon.png";
 const logo = "https://i.ibb.co/7XV6bF3/logo.png";
 const ascIcon = "https://i.ibb.co/Dk0T4FW/asc.png";
 const descIcon = "https://i.ibb.co/PC9wcqY/desc.png";
+const searchIcon = "https://i.ibb.co/6BmWvt3/search.png";
 
 const handleDarkMode = () => {
   document.body.style.background = `${themeColor}`;
@@ -78,7 +79,7 @@ const handleDarkMode = () => {
     .forEach((element) => {
       element.style.color = lightText;
     });
-  document.querySelectorAll("h1, h2, h4").forEach((element) => {
+  document.querySelectorAll("h1, h2,h3, h4").forEach((element) => {
     element.style.color = whiteText;
   });
   document.querySelectorAll(".spoiler, .header").forEach((element) => {
@@ -352,11 +353,32 @@ const handleDarkMode = () => {
 
   const optionDOM = () => {
     document.querySelectorAll("option, select")?.forEach((element) => {
+      element.style.setProperty("color", lightText);
       element.style.setProperty("fontSize", "13px");
       element.style.setProperty("color", lightText, "important");
       element.style.setProperty("background", themeColor2, "important");
     });
   };
+
+  document.querySelectorAll(".search, .filter input").forEach((element) => {
+    element.style.background = `${themeColor2} url('${searchIcon}') 2px 2px no-repeat`;
+    element.style.backgroundSize = "15px";
+    element.style.fontSize = "14px";
+    element.style.color = lightText;
+    element.style.border = `1px solid ${lightText}`;
+  });
+  document
+    .querySelectorAll(
+      `[name="minDifficulty"], [name="maxDifficulty"], .handleBox.ac_input, ._CatalogViewFrame_filter`
+    )
+    .forEach((element) => {
+      console.log(element);
+      element.style.background = themeColor2;
+      element.style.fontSize = "14px";
+      element.style.color = lightText;
+      element.style.border = `1px solid ${lightText}`;
+      element.style.borderRadius = "2px";
+    });
 
   optionDOM();
   document.querySelectorAll("form#locationSelect").forEach((element) => {
@@ -401,6 +423,8 @@ const handleDarkMode = () => {
         element.style.setProperty("color", green1);
       else if (element.classList.contains("kwd"))
         element.style.setProperty("color", blueColor1);
+      else if (element.classList.contains("pun"))
+        element.style.setProperty("color", warningColor);
     });
     element.style.color = lightText;
   });
@@ -414,7 +438,7 @@ const handleDarkMode = () => {
     element.style.borderColor = themeColor2;
   });
 
-  const handleNonDecorated = (element, title) => {
+  const handleNonDecorated = (element) => {
     element.querySelectorAll("img").forEach((element, i) => {
       element.style.display = "inline-block";
       element.style.flexGrow = "0";
@@ -440,14 +464,49 @@ const handleDarkMode = () => {
     element.style.gap = "10px";
     handleNonDecorated(element);
     if (element.title == "Difficulty") {
-      element.addEventListener("click", () =>
-        handleNonDecorated(element, "Difficulty")
-      );
+      element.addEventListener("click", () => handleNonDecorated(element));
     } else {
-      element.addEventListener("click", () =>
-        handleNonDecorated(element, "Solved")
-      );
+      element.addEventListener("click", () => handleNonDecorated(element));
     }
   });
+
+  document.querySelectorAll(".userbox .badge").forEach((element) => {
+    element.style.paddingBottom = "15px";
+  });
+
+  document.querySelectorAll(".options .opt").forEach((element) => {
+    element.style.setProperty("background", themeColor2, "important");
+    element.style.color = lightText;
+    element.addEventListener("mouseenter", (e) => {
+      element.style.setProperty("background", themeColor, "important");
+    });
+    element.addEventListener("mouseleave", (e) => {
+      element.style.setProperty("background", themeColor2, "important");
+    });
+  });
+
+  document.querySelectorAll("#filterSubstring").forEach((element) => {
+    element.style.background = themeColor2;
+    element.style.color = lightText;
+    element.style.border = `1px solid ${lightText}`;
+    element.style.fontSize = "14px";
+  });
+
+  document.querySelectorAll(".CaptionCont.SelectBox").forEach((element) => {
+    element.style.background = themeColor2;
+    element.style.color = lightText;
+
+    element.querySelectorAll("i").forEach((element) => {
+      element.style.background = `url('${ascIcon}')`;
+      element.style.setProperty(
+        "background",
+        `url('${ascIcon}') no-repeat`,
+        "important"
+      );
+      element.style.setProperty("background-size", `10px`, "important");
+      element.style.setProperty("transform", "translateY(25%)", "important");
+    });
+  });
 };
+
 handleDarkMode();
