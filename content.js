@@ -6,12 +6,57 @@ const lightText = "#f1f1f1";
 const theneText = "#f5f3f4";
 const whiteText = "#ffffff";
 const blueColor1 = "#0496ff";
-const blueColor2 = "#072ac8";
+const blueColor2 = "#0d41e1";
 const warningColor = "#ff7b00";
+const green1 = "#29bf12";
+const red1 = "#ef233c";
+const purpel1 = "#f20089";
+const sortIcon = "https://i.ibb.co/W6RC8qW/sortIcon.png";
+const logo = "https://i.ibb.co/7XV6bF3/logo.png";
+const ascIcon = "https://i.ibb.co/Dk0T4FW/asc.png";
+const descIcon = "https://i.ibb.co/PC9wcqY/desc.png";
 
 const handleDarkMode = () => {
   document.body.style.background = `${themeColor}`;
   document.body.style.color = `${lightText}`;
+
+  document.querySelector("#header a img") &&
+    (document.querySelector("#header a img").src = logo);
+
+  document.querySelectorAll("small").forEach((element) => {
+    element.style.color = theneText;
+  });
+
+  document
+    .querySelectorAll("._CatalogHistorySidebarFrame_item")
+    .forEach((element) => {
+      element.style.lineHeight = "1.5";
+    });
+  document
+    .querySelectorAll(
+      "._CatalogViewFrame_catalog-action-icon, .icon-folder-open-alt"
+    )
+    .forEach((element) => {
+      element.style.color = theneText;
+    });
+
+  document
+    .querySelectorAll("._CatalogHistorySidebarFrame_value")
+    .forEach((element) => {
+      element.style.color = theneText;
+    });
+  document
+    .querySelectorAll(
+      "._CatalogHistorySidebarFrame_value ins, ._CatalogHistorySidebarFrame_value del"
+    )
+    .forEach((element) => {
+      element.style.color = themeColor;
+    });
+
+  document.querySelectorAll(".icon-file-text-alt").forEach((item) => {
+    item.style.setProperty("color", theneText, "important");
+  });
+
   document.querySelectorAll("div").forEach((element) => {
     element.style.color = lightText;
   });
@@ -49,7 +94,6 @@ const handleDarkMode = () => {
     element.style.color = lightText;
   });
 
-  console.log(document.querySelectorAll(".info a.rated-user.user-black"));
   document
     .querySelectorAll(".info a.rated-user.user-black")
     .forEach((element) => {
@@ -168,18 +212,6 @@ const handleDarkMode = () => {
     element.style.color = blueColor1;
   });
 
-  document.querySelectorAll(".bordertable tr").forEach((item) => {
-    item.style.color = lightText;
-    item.addEventListener("mouseenter", (e) => {
-      item.style.color = themeColor;
-      item.style.background = `${themeColor2} !important`;
-    });
-    item.addEventListener("mouseleave", (e) => {
-      item.style.color = lightText;
-      item.style.background = ``;
-    });
-  });
-
   document.querySelectorAll(".alert.alert-error").forEach((element) => {
     element.style.background = warningColor;
     element.style.color = whiteText;
@@ -205,15 +237,17 @@ const handleDarkMode = () => {
     element.style.color = lightText;
   });
 
-  document.querySelectorAll(".datatable td").forEach((element) => {
+  document.querySelectorAll("td").forEach((element) => {
     element
       .querySelectorAll(".groupName")
       .forEach((element) =>
         element.style.setProperty("color", blueColor1, "important")
       );
-    element.style.background = element.classList.contains("dark")
-      ? themeColor2
-      : themeColor;
+    element.style.setProperty(
+      "background",
+      element.classList.contains("dark") ? themeColor2 : themeColor,
+      "important"
+    );
     element.style.border = `1px solid ${borderColor1}`;
     element.style.color = `${lightText}!important`;
   });
@@ -253,21 +287,48 @@ const handleDarkMode = () => {
     });
   });
 
-  document.querySelectorAll(".submit").forEach((element) => {
-    element.style.cursor = "pointer";
-    element.style.background = whiteText;
-    element.style.border = "none";
-    element.style.padding = "4px 8px";
-    element.style.display = "inline-block";
-    element.style.borderRadius = "4px";
-  });
+  document
+    .querySelectorAll("input[type='button'], input[type='submit']")
+    .forEach((element) => {
+      element.style.fontSize = "14px";
+      element.style.cursor = "pointer";
+      element.style.background = whiteText;
+      element.style.border = "none";
+      element.style.padding = "4px 8px";
+      element.style.display = "inline-block";
+      element.style.borderRadius = "4px";
+    });
 
-  console.log(document.querySelectorAll(".comment-table.highlight-blue"));
   document
     .querySelectorAll(".comment-table.highlight-blue")
     .forEach((element) => {
-      element.style.setProperty("background", blueColor1);
+      element.style.setProperty("background", blueColor2, "important");
     });
+
+  document.querySelectorAll(".new-comments-box div").forEach((element) => {
+    element.style.background = themeColor;
+    element.style.color = whiteText;
+  });
+
+  console.log(document.querySelectorAll(".MathJax"));
+  document.querySelectorAll("div.ttypography .MathJax").forEach((element) => {
+    // element.style.setProperty("color", whiteText, "important");
+    // element.classList.remove("MathJax");
+    // element.style.setProperty("background", whiteText, "important");
+    // element.style.setProperty("background", whiteText, "important");
+    // element.style.setProperty("background", whiteText, "important");
+    console.log(element.innerText);
+  });
+
+  document.querySelectorAll(".prettyprint .lit").forEach((element) => {
+    element.style.color = green1;
+  });
+  console.log(document.querySelectorAll("code.tt"));
+  document.querySelectorAll("code.tt").forEach((element) => {
+    element.style.background = themeColor3;
+    element.style.borderColor = red1;
+    element.style.color = red1;
+  });
 
   document.querySelectorAll(".nav-links li a").forEach((item) => {
     item.style.fontSize = "14px";
@@ -279,9 +340,114 @@ const handleDarkMode = () => {
 
   document.querySelectorAll(".bell-details").forEach((element) => {
     element.style.background = themeColor;
-    element.querySelectorAll("bell-details__no-new").forEach((element) => {
-      element.style.color = lightText;
+    element.querySelectorAll(".bell-details__no-new").forEach((element) => {
+      console.log(element);
+      element.style.setProperty("color", lightText);
     });
+  });
+
+  document.querySelectorAll(".ttypography").forEach((element) => {
+    element.style.setProperty("color", lightText, "important");
+  });
+
+  const optionDOM = () => {
+    document.querySelectorAll("option, select")?.forEach((element) => {
+      element.style.setProperty("fontSize", "13px");
+      element.style.setProperty("color", lightText, "important");
+      element.style.setProperty("background", themeColor2, "important");
+    });
+  };
+
+  optionDOM();
+  document.querySelectorAll("form#locationSelect").forEach((element) => {
+    element.style.fontSize = "13px";
+    element.style.color = lightText;
+    optionDOM();
+  });
+  document.querySelectorAll(".verdict-rejected")?.forEach((element) => {
+    element.style.color = blueColor2;
+  });
+
+  const handleProfileRating = (element, i) => {
+    if (!i) {
+      element.querySelectorAll("span").forEach((element) => {
+        element.style.background = lightText;
+        element.style.padding = "2px";
+        element.style.borderRadius = "2px";
+        element.style.color = themeColor;
+      });
+    } else if (i == 1) {
+      element.querySelectorAll("span").forEach((element) => {
+        element.style.color = lightText;
+      });
+    }
+  };
+  document
+    .querySelectorAll(".propertyLinks li")
+    .forEach((element, i) => handleProfileRating(element, i));
+  document.querySelectorAll(".info").forEach((element) => {
+    element
+      .querySelectorAll("ul li")
+      .forEach((element, i) => handleProfileRating(element, i));
+  });
+
+  document.querySelectorAll(".prettyprint.prettyprinted").forEach((element) => {
+    element.querySelectorAll("span").forEach((element) => {
+      if (element.classList.contains("typ"))
+        element.style.setProperty("color", purpel1);
+      else if (element.classList.contains("pln"))
+        element.style.setProperty("color", lightText);
+      else if (element.classList.contains("str"))
+        element.style.setProperty("color", green1);
+      else if (element.classList.contains("kwd"))
+        element.style.setProperty("color", blueColor1);
+    });
+    element.style.color = lightText;
+  });
+
+  document.querySelectorAll(".bordertable tr").forEach((item) => {
+    item.style.color = lightText;
+  });
+
+  document.querySelectorAll(".page-index.active").forEach((element) => {
+    element.style.background = themeColor2;
+    element.style.borderColor = themeColor2;
+  });
+
+  const handleNonDecorated = (element, title) => {
+    element.querySelectorAll("img").forEach((element, i) => {
+      element.style.display = "inline-block";
+      element.style.flexGrow = "0";
+      element.style.flexShrink = "0";
+      element.style.objectFit = "contain";
+      i && (element.src = sortIcon);
+
+      if (i) {
+        if (element.title.toLocaleLowerCase().includes("asc")) {
+          element.src = descIcon;
+          element.style.width = "10px";
+        } else if (element.title.toLocaleLowerCase().includes("desc")) {
+          element.src = ascIcon;
+          element.style.width = "10px";
+        }
+      }
+    });
+  };
+  document.querySelectorAll(".non-decorated").forEach((element) => {
+    element.style.display = "flex";
+    element.style.justifyContent = "center";
+    element.style.alignItem = "center";
+    element.style.gap = "10px";
+    handleNonDecorated(element);
+    if (element.title == "Difficulty") {
+      element.addEventListener("click", () =>
+        handleNonDecorated(element, "Difficulty")
+      );
+    } else {
+      element.addEventListener("click", () =>
+        handleNonDecorated(element, "Solved")
+      );
+    }
   });
 };
 handleDarkMode();
