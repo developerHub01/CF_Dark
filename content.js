@@ -21,7 +21,11 @@ const handleDarkMode = () => {
   document.body.style.background = `${themeColor}`;
   document.body.style.color = `${lightText}`;
 
-  document.querySelector("#header a img") &&
+  // logo
+  document.querySelector("#header a") &&
+    document.querySelector("#header a").href.trim() ===
+      "https://codeforces.com/" &&
+    document.querySelector("#header a img") &&
     (document.querySelector("#header a img").src = logo);
 
   document.querySelectorAll("small").forEach((element) => {
@@ -101,17 +105,103 @@ const handleDarkMode = () => {
       element.style.setProperty("color", whiteText);
     });
 
-  document
-    .querySelectorAll(".problem-statement .sample-tests pre")
-    .forEach((element) => {
-      element.style.background = themeColor2;
+  /* 
+  ==========================================================
+                        Test case 
+  ============================================================
+  */
+  document.querySelectorAll(".sample-test").forEach((element) => {
+    element.style.setProperty("color", themeColor, "important");
+    element.querySelectorAll(".test-example-line, pre").forEach((element) => {
+      element.style.setProperty("color", themeColor, "important");
+      element.style.setProperty("font-size", '14px', "important");
+      element.style.setProperty("font-weight", '800', "important");
+      element.style.setProperty("padding", '4px', "important");
     });
-
-  document.querySelectorAll(".mrow .mn").forEach((element) => {
-    element.style.color = `#fff!important`;
-    element.style.setProperty("color", whiteText, "important");
-    element.style.border = "1px solid red";
   });
+
+  // document
+  //   .querySelectorAll(".problem-statement .sample-tests pre")
+  //   .forEach((element) => {
+  //     element.style.background = themeColor2;
+  //     element
+  //       .querySelectorAll(".test-example-line.test-example-line-even")
+  //       .forEach((element) => {
+  //         element.removeAttribute("style");
+
+  //         element.style.setProperty("background", themeColor, "important");
+  //         element.style.setProperty("color", lightText, "important");
+  //         element.addEventListener("mouseenter", () => {
+  //           element
+  //             .querySelectorAll(".test-example-line.test-example-line-even")
+  //             .forEach((element) => {
+  //               element.removeAttribute("style");
+  //               element.style.setProperty(
+  //                 "background",
+  //                 themeColor,
+  //                 "important"
+  //               );
+  //               element.style.setProperty("color", lightText, "important");
+  //             });
+  //         });
+  //         element.addEventListener("mouseleave", () => {
+  //           element
+  //             .querySelectorAll(".test-example-line.test-example-line-even")
+  //             .forEach((element) => {
+  //               element.removeAttribute("style");
+  //               element.removeAttribute("style");
+  //               element.style.setProperty(
+  //                 "background",
+  //                 themeColor,
+  //                 "important"
+  //               );
+  //               element.style.setProperty("color", lightText, "important");
+  //             });
+  //         });
+  //       });
+  //     element
+  //       .querySelectorAll(".test-example-line.test-example-line-odd")
+  //       .forEach((element) => {
+  //         element.removeAttribute("style");
+
+  //         element.style.setProperty("background", themeColor, "important");
+  //         element.style.setProperty("color", lightText, "important");
+  //         element.addEventListener("mouseenter", () => {
+  //           element
+  //             .querySelectorAll(".test-example-line.test-example-line-odd")
+  //             .forEach((element) => {
+  //               element.removeAttribute("style");
+  //               element.style.setProperty(
+  //                 "background",
+  //                 themeColor,
+  //                 "important"
+  //               );
+  //               element.style.setProperty("color", lightText, "important");
+  //             });
+  //         });
+  //         element.addEventListener("mouseleave", () => {
+  //           element
+  //             .querySelectorAll(".test-example-line.test-example-line-odd")
+  //             .forEach((element) => {
+  //               element.removeAttribute("style");
+  //               element.removeAttribute("style");
+  //               element.style.setProperty(
+  //                 "background",
+  //                 themeColor,
+  //                 "important"
+  //               );
+  //               element.style.setProperty("color", lightText, "important");
+  //             });
+  //         });
+  //       });
+  //   });
+
+  // not sure ==========================
+  // document.querySelectorAll(".mrow .mn").forEach((element) => {
+  //   element.style.color = `#fff!important`;
+  //   element.style.setProperty("color", whiteText, "important");
+  //   element.style.border = "1px solid red";
+  // });
 
   document.querySelectorAll(".sidebar-menu ul li").forEach((element) => {
     element.style.setProperty("border", "1px solid transparent");
@@ -213,11 +303,15 @@ const handleDarkMode = () => {
     element.style.color = blueColor1;
   });
 
-  document.querySelectorAll(".alert.alert-error").forEach((element) => {
+  document.querySelectorAll(".alert").forEach((element) => {
     element.style.background = warningColor;
     element.style.color = whiteText;
     element.style.borderColor = warningColor;
-    console.log(element.querySelector("a"));
+    element.style.display = "flex";
+    element.style.justifyContent = "center";
+    element.style.alignItem = "center";
+    element.style.gap = "5px";
+    element.style.flexWrap = "wrap";
     element.querySelectorAll("a").forEach((item) => {
       item.style.color = blueColor2;
       item.style.textShadow = "none";
@@ -311,20 +405,10 @@ const handleDarkMode = () => {
     element.style.color = whiteText;
   });
 
-  console.log(document.querySelectorAll(".MathJax"));
-  document.querySelectorAll("div.ttypography .MathJax").forEach((element) => {
-    // element.style.setProperty("color", whiteText, "important");
-    // element.classList.remove("MathJax");
-    // element.style.setProperty("background", whiteText, "important");
-    // element.style.setProperty("background", whiteText, "important");
-    // element.style.setProperty("background", whiteText, "important");
-    console.log(element.innerText);
-  });
-
   document.querySelectorAll(".prettyprint .lit").forEach((element) => {
     element.style.color = green1;
   });
-  console.log(document.querySelectorAll("code.tt"));
+
   document.querySelectorAll("code.tt").forEach((element) => {
     element.style.background = themeColor3;
     element.style.borderColor = red1;
@@ -342,7 +426,6 @@ const handleDarkMode = () => {
   document.querySelectorAll(".bell-details").forEach((element) => {
     element.style.background = themeColor;
     element.querySelectorAll(".bell-details__no-new").forEach((element) => {
-      console.log(element);
       element.style.setProperty("color", lightText);
     });
   });
@@ -372,7 +455,6 @@ const handleDarkMode = () => {
       `[name="minDifficulty"], [name="maxDifficulty"], .handleBox.ac_input, ._CatalogViewFrame_filter`
     )
     .forEach((element) => {
-      console.log(element);
       element.style.background = themeColor2;
       element.style.fontSize = "14px";
       element.style.color = lightText;
@@ -507,6 +589,103 @@ const handleDarkMode = () => {
       element.style.setProperty("transform", "translateY(25%)", "important");
     });
   });
+
+  // document
+  //   .querySelectorAll(".second-level-menu-list li.backLava")
+  //   .forEach((element) => {
+  //     element.classList.remove("backLava");
+  //     document.querySelectorAll(".leftLava").forEach((element) => {
+  //       console.log(element.parentElement());
+  //     });
+  //   });
+
+  document.querySelectorAll(".backLava").forEach((element) => {
+    element.classList.remove("backLava");
+  });
+
+  document.querySelectorAll(".second-level-menu-list ").forEach((element) => {
+    element.querySelector("li").style.background = blueColor1;
+    element.querySelector("li").style.borderRadius = "4px 4px 0 0";
+    element.querySelectorAll("li a").forEach((element) => {
+      if (element.parentElement.classList.contains("selectedLava")) {
+        element.style.color = whiteText;
+      } else {
+        element.addEventListener("mouseenter", (e) => {
+          element.style.color = whiteText;
+        });
+        element.addEventListener("mouseleave", (e) => {
+          element.style.color = blueColor1;
+        });
+      }
+    });
+  });
+
+  /* ====================================================================
+                            Math text manipulation                        
+  ======================================================================*/
+
+  // document.querySelectorAll(".mrow").forEach((element) => {
+  //   console.log(element);
+  //   element.style.setProperty("background", whiteText, "important");
+  //   // console.log(element);
+  //   // element.classList.remove("MathJax");
+  //   // element.style.setProperty("color", whiteText, "important");
+  // });
+
+  // document.querySelectorAll(".MathJax").forEach((element) => {
+  //   element.style.background = "white";
+  //   element.style.padding = "3px 8px";
+  //   element.style.borderRadius = "3px";
+  //   // element.style.setProperty("background", whiteText, "important");
+  //   // element.style.setProperty("padding", "3px 8px", "important");
+  //   // element.style.setProperty("borderRadius", "3px", "important");
+  // });
+
+  // document.querySelectorAll(".MathJax span").forEach((element) => {
+  //   element.style.background = whiteText;
+  // });
+
+  // console.log(document.querySelectorAll("nobr"));
+
+  // // console.log(document.querySelectorAll("math"));
+
+  document.querySelectorAll(".math").forEach((element) => {
+    element = element.parentElement;
+    // console.log(element);
+    // element.innerHTML = "hello";
+    element.style.setProperty("background", whiteText, "important");
+  });
+
+  console.log(document.querySelectorAll(".MathJax"));
+
+  /* 
+    .MathJax {
+    display: inline;
+    font-style: normal;
+    font-weight: normal;
+    line-height: normal;
+    font-size: 100%;
+    font-size-adjust: none;
+    text-indent: 0;
+    text-align: left;
+    text-transform: none;
+    letter-spacing: normal;
+    word-spacing: normal;
+    word-wrap: normal;
+    white-space: nowrap;
+    float: none;
+    direction: ltr;
+    max-width: none;
+    max-height: none;
+    min-width: 0;
+    min-height: 0;
+    border: 0;
+    padding: 0;
+    margin: 0;
+    background: white;
+    padding: 4px 8px;
+}
+    */
 };
 
 handleDarkMode();
