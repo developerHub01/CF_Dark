@@ -11,6 +11,10 @@ const warningColor = "#ff7b00";
 const green1 = "#29bf12";
 const red1 = "#ef233c";
 const purpel1 = "#f20089";
+const testCaseColor1 = "#121212";
+const testCaseColor2 = "#262626";
+const testCaseColor3 = "#050505";
+const testCaseColor4 = "#1c1c1c";
 const sortIcon = "https://i.ibb.co/W6RC8qW/sortIcon.png";
 const logo = "https://i.ibb.co/7XV6bF3/logo.png";
 const ascIcon = "https://i.ibb.co/Dk0T4FW/asc.png";
@@ -89,6 +93,9 @@ const handleDarkMode = () => {
   document.querySelectorAll(".spoiler, .header").forEach((element) => {
     element.style.color = lightText;
   });
+  document.querySelectorAll(".spoiler-content").forEach((element) => {
+    element.style.background = lightText;
+  });
   document
     .querySelectorAll(".spoiler .spoiler-content p")
     .forEach((element) => {
@@ -105,103 +112,63 @@ const handleDarkMode = () => {
       element.style.setProperty("color", whiteText);
     });
 
-  /* 
-  ==========================================================
+  /*==========================================================
                         Test case 
-  ============================================================
-  */
+  ============================================================*/
+
+  const handleThemeOfTestCase = (element, className, bgColor1, bgColor2) => {
+    element.querySelectorAll(`.${className}`).forEach((element) => {
+      element.style.background = bgColor1;
+      element.addEventListener("mouseover", () => {
+        let currentElement = element;
+        while (currentElement && currentElement.classList.contains(className)) {
+          currentElement.style.background = bgColor2;
+          currentElement = currentElement.previousElementSibling;
+        }
+        currentElement = element;
+        while (currentElement && currentElement.classList.contains(className)) {
+          currentElement.style.background = bgColor2;
+          currentElement = currentElement.nextElementSibling;
+        }
+      });
+      element.addEventListener("mouseleave", () => {
+        let currentElement = element;
+        while (currentElement && currentElement.classList.contains(className)) {
+          currentElement.style.background = bgColor1;
+          currentElement = currentElement.previousElementSibling;
+        }
+        currentElement = element;
+        while (currentElement && currentElement.classList.contains(className)) {
+          currentElement.style.background = bgColor1;
+          currentElement = currentElement.nextElementSibling;
+        }
+      });
+    });
+  };
+
   document.querySelectorAll(".sample-test").forEach((element) => {
     element.style.setProperty("color", themeColor, "important");
     element.querySelectorAll(".test-example-line, pre").forEach((element) => {
-      element.style.setProperty("color", themeColor, "important");
-      element.style.setProperty("font-size", '14px', "important");
-      element.style.setProperty("font-weight", '800', "important");
-      element.style.setProperty("padding", '4px', "important");
+      element.style.setProperty("background", themeColor, "important");
+      element.style.setProperty("color", lightText, "important");
+      element.style.setProperty("font-size", "14px", "important");
+      element.style.setProperty("font-weight", "800", "important");
+      element.style.setProperty("padding", "4px", "important");
     });
+
+    handleThemeOfTestCase(
+      element,
+      "test-example-line-odd",
+      testCaseColor1,
+      testCaseColor2
+    );
+    handleThemeOfTestCase(
+      element,
+      "test-example-line-even",
+      testCaseColor3,
+      testCaseColor4
+    );
   });
-
-  // document
-  //   .querySelectorAll(".problem-statement .sample-tests pre")
-  //   .forEach((element) => {
-  //     element.style.background = themeColor2;
-  //     element
-  //       .querySelectorAll(".test-example-line.test-example-line-even")
-  //       .forEach((element) => {
-  //         element.removeAttribute("style");
-
-  //         element.style.setProperty("background", themeColor, "important");
-  //         element.style.setProperty("color", lightText, "important");
-  //         element.addEventListener("mouseenter", () => {
-  //           element
-  //             .querySelectorAll(".test-example-line.test-example-line-even")
-  //             .forEach((element) => {
-  //               element.removeAttribute("style");
-  //               element.style.setProperty(
-  //                 "background",
-  //                 themeColor,
-  //                 "important"
-  //               );
-  //               element.style.setProperty("color", lightText, "important");
-  //             });
-  //         });
-  //         element.addEventListener("mouseleave", () => {
-  //           element
-  //             .querySelectorAll(".test-example-line.test-example-line-even")
-  //             .forEach((element) => {
-  //               element.removeAttribute("style");
-  //               element.removeAttribute("style");
-  //               element.style.setProperty(
-  //                 "background",
-  //                 themeColor,
-  //                 "important"
-  //               );
-  //               element.style.setProperty("color", lightText, "important");
-  //             });
-  //         });
-  //       });
-  //     element
-  //       .querySelectorAll(".test-example-line.test-example-line-odd")
-  //       .forEach((element) => {
-  //         element.removeAttribute("style");
-
-  //         element.style.setProperty("background", themeColor, "important");
-  //         element.style.setProperty("color", lightText, "important");
-  //         element.addEventListener("mouseenter", () => {
-  //           element
-  //             .querySelectorAll(".test-example-line.test-example-line-odd")
-  //             .forEach((element) => {
-  //               element.removeAttribute("style");
-  //               element.style.setProperty(
-  //                 "background",
-  //                 themeColor,
-  //                 "important"
-  //               );
-  //               element.style.setProperty("color", lightText, "important");
-  //             });
-  //         });
-  //         element.addEventListener("mouseleave", () => {
-  //           element
-  //             .querySelectorAll(".test-example-line.test-example-line-odd")
-  //             .forEach((element) => {
-  //               element.removeAttribute("style");
-  //               element.removeAttribute("style");
-  //               element.style.setProperty(
-  //                 "background",
-  //                 themeColor,
-  //                 "important"
-  //               );
-  //               element.style.setProperty("color", lightText, "important");
-  //             });
-  //         });
-  //       });
-  //   });
-
-  // not sure ==========================
-  // document.querySelectorAll(".mrow .mn").forEach((element) => {
-  //   element.style.color = `#fff!important`;
-  //   element.style.setProperty("color", whiteText, "important");
-  //   element.style.border = "1px solid red";
-  // });
 
   document.querySelectorAll(".sidebar-menu ul li").forEach((element) => {
     element.style.setProperty("border", "1px solid transparent");
@@ -385,6 +352,14 @@ const handleDarkMode = () => {
   document
     .querySelectorAll("input[type='button'], input[type='submit']")
     .forEach((element) => {
+      // element.style.setProperty("font-size", "14px", "!important");
+      // element.style.setProperty("cursor", "pointer", "!important");
+      // element.style.setProperty("background", whiteText, "!important");
+      // element.style.setProperty("color", themeColor, "!important");
+      // element.style.setProperty("border", "none", "!important");
+      // element.style.setProperty("padding", "4px 8px", "!important");
+      // element.style.setProperty("display", "4px 8px", "!important");
+      // element.style.setProperty("border-radius", "4px", "!important");
       element.style.fontSize = "14px";
       element.style.cursor = "pointer";
       element.style.background = whiteText;
@@ -599,8 +574,71 @@ const handleDarkMode = () => {
   //     });
   //   });
 
+  document.querySelectorAll(".welldone").forEach((element) => {
+    element.style.color = green1;
+  });
+
+  document
+    .querySelectorAll(".field-name._SidebarSettingsPage_field-name")
+    .forEach((element) => {
+      element.style.color = lightText;
+    });
+
+  /*==========================================================
+  ========================= Input box animation ==================
+  ========================================================*/
+  document.querySelectorAll("input").forEach((element) => {
+    if (
+      element.type === "password" ||
+      element.type === "email" ||
+      element.name === "password" ||
+      element.name === "email" ||
+      element.name === "firstName" ||
+      element.name === "lastName" ||
+      element.name === "lastName" ||
+      element.name === "handleOrEmail"
+    ) {
+      element.style.background = themeColor2;
+      element.style.color = lightText;
+      element.style.fontSize = "14px";
+      element.style.border = "none";
+    }
+  });
+
+  /*==========================================================
+  ========================= Navbar animation ==================
+  ========================================================*/
+  document.querySelectorAll("textarea#registrationTerms").forEach((element) => {
+    element.style.background = themeColor2;
+    element.style.color = whiteText;
+    element.style.fontSize = "14px";
+    element.style.lineHeight = 1.5;
+    element.style.resize = "vertical";
+  });
+
+  /*==========================================================
+  ========================= Catalog time ==================
+  ========================================================*/
+  document
+    .querySelectorAll("._CatalogViewFrame_choose-time")
+    .forEach((element) => {
+      element.style.background = themeColor;
+      element.querySelectorAll("li").forEach((element) => {
+        element.style.background = themeColor;
+        element.addEventListener("mouseover", () => {
+          element.style.background = themeColor2;
+        });
+        element.addEventListener("mouseleave", () => {
+          element.style.background = themeColor;
+        });
+      });
+    });
+  /*==========================================================
+  ========================= Navbar animation ==================
+  ========================================================*/
+
   document.querySelectorAll(".backLava").forEach((element) => {
-    element.classList.remove("backLava");
+    element.innerHTML = "";
   });
 
   document.querySelectorAll(".second-level-menu-list ").forEach((element) => {
@@ -623,37 +661,12 @@ const handleDarkMode = () => {
   /* ====================================================================
                             Math text manipulation                        
   ======================================================================*/
-
-  // document.querySelectorAll(".mrow").forEach((element) => {
-  //   console.log(element);
-  //   element.style.setProperty("background", whiteText, "important");
-  //   // console.log(element);
-  //   // element.classList.remove("MathJax");
-  //   // element.style.setProperty("color", whiteText, "important");
-  // });
-
-  // document.querySelectorAll(".MathJax").forEach((element) => {
-  //   element.style.background = "white";
-  //   element.style.padding = "3px 8px";
-  //   element.style.borderRadius = "3px";
-  //   // element.style.setProperty("background", whiteText, "important");
-  //   // element.style.setProperty("padding", "3px 8px", "important");
-  //   // element.style.setProperty("borderRadius", "3px", "important");
-  // });
-
-  // document.querySelectorAll(".MathJax span").forEach((element) => {
-  //   element.style.background = whiteText;
-  // });
-
-  // console.log(document.querySelectorAll("nobr"));
-
-  // // console.log(document.querySelectorAll("math"));
-
   document.querySelectorAll(".math").forEach((element) => {
-    element = element.parentElement;
+    element.style.background = "red";
+    // element = element.parentElement;
     // console.log(element);
     // element.innerHTML = "hello";
-    element.style.setProperty("background", whiteText, "important");
+    // element.style.setProperty("background", whiteText, "important");
   });
 
   console.log(document.querySelectorAll(".MathJax"));
