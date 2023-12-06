@@ -33,6 +33,7 @@ button {
   border-radius: 8px;
   font-size: 20px;
   border: 2px solid #fff;
+  color: #fff;
   transition: all 0.2s ease-in-out;
 }
 button:hover,
@@ -41,24 +42,32 @@ button.active {
 }
 .t0 {
   background: #fff;
+  color: #212121;
 }
 .t1 {
   background: #212121;
-  color: #fff;
 }
 .t2 {
   background: #001523;
-  color: #fff;
 }
 .t3 {
   background: #2f0e07;
-  color: #fff;
 }
 .t4 {
   background: #141414;
-  color: #fff;
 }
 .t5 {
   background: #000b25;
-  color: #fff;
+}
+.t6 {
+  background: #001b0b;
+}
+.t7 {
+  background: #001f29;
+}
+.t8 {
+  background: #1e2029;
+}
+.t9 {
+  background: #142133;
 }

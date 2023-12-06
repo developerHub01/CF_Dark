@@ -34,6 +34,30 @@ const themes = [
     themeColor2: "#00081c",
     themeColor3: "#000e2f",
   },
+  {
+    themeName: "t6",
+    themeColor1: "#001b0b",
+    themeColor2: "#001609",
+    themeColor3: "#00220e",
+  },
+  {
+    themeName: "t7",
+    themeColor1: "#001f29",
+    themeColor2: "#001214",
+    themeColor3: "#002837",
+  },
+  {
+    themeName: "t8",
+    themeColor1: "#1e2029",
+    themeColor2: "#1b1d25",
+    themeColor3: "#21232d",
+  },
+  {
+    themeName: "t9",
+    themeColor1: "#142133",
+    themeColor2: "#0d1b2a",
+    themeColor3: "#182437",
+  },
 ];
 
 buttons.forEach((element, i) => {
