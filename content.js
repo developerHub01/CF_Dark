@@ -9,13 +9,14 @@ const blueColor1 = "#0496ff";
 const blueColor2 = "#0d41e1";
 const warningColor = "#ff7b00";
 const green1 = "#29bf12";
-const red1 = "#ef233c";
+const red1 = "#d90429";
 const purpel1 = "#f20089";
 const pink1 = "#ff0a54";
 const testCaseColor1 = "#121212";
 const testCaseColor2 = "#262626";
 const testCaseColor3 = "#050505";
 const testCaseColor4 = "#1c1c1c";
+const ace_keyword_color = "#e21fc6";
 const sortIcon = "https://i.ibb.co/W6RC8qW/sortIcon.png";
 const logo = "https://i.ibb.co/7XV6bF3/logo.png";
 const ascIcon = "https://i.ibb.co/Dk0T4FW/asc.png";
@@ -94,14 +95,6 @@ const handleDarkMode = () => {
   document.querySelectorAll(".spoiler, .header").forEach((element) => {
     element.style.color = lightText;
   });
-  document.querySelectorAll(".spoiler-content").forEach((element) => {
-    element.style.background = lightText;
-  });
-  document
-    .querySelectorAll(".spoiler .spoiler-content p")
-    .forEach((element) => {
-      element.style.setProperty("color", themeColor, "important");
-    });
 
   document.querySelectorAll(".page-index.active").forEach((element) => {
     element.style.color = lightText;
@@ -174,10 +167,6 @@ const handleDarkMode = () => {
   /*==========================================================
                         Submission problem details 
   ============================================================*/
-  document.querySelectorAll(".verdict_type.welldone").forEach((element) => {
-    element.style.color = green1;
-    element.style.setProperty("color", green1, "important");
-  });
   document
     .querySelectorAll(
       ".file.input-view, .file.output-view, .file.answer-view, .file.checker-comment-view"
@@ -196,26 +185,57 @@ const handleDarkMode = () => {
       element.querySelectorAll(".name").forEach((element) => {
         element.style.paddingBottom = "5px";
         element.style.display = "inline-block";
+
+        const verdictElement = element.parentElement.previousElementSibling;
+        if (verdictElement.classList.contains("verdict_infoline")) {
+          verdictElement.querySelectorAll("div").forEach((element) => {
+            if (element.classList.contains("welldone")) {
+              element.style.color = green1;
+              element.style.setProperty("color", green1, "important");
+              element.style.background = green1;
+            }
+          });
+        }
       });
     });
 
-  console.log("================================");
-  // console.log(document.querySelectorAll("#facebox"));
-
-  /* ====================== */
-  document.querySelectorAll(".view-source").forEach((element) => {
-    element.addEventListener("click", (e) => {
-      console.log("================================");
-      console.log(document.querySelectorAll(".popup"));
-      document.querySelectorAll(".popup").forEach((element) => {
-        element.style.background = themeColor2;
-        console.log(element.querySelectorAll(".content"));
-        element.querySelectorAll(".content").forEach((element) => {
-          element.style.background = themeColor2;
-        });
+  document
+    .querySelectorAll(".infoline.verdict_infoline .verdict_type.welldone")
+    .forEach((element) => {
+      element.style.background = "red";
+      element.style.setProperty("background", "red", "important");
+    });
+  document
+    .querySelectorAll(
+      ".view-protocol, .view-source, ._UserTalkBlacklistFrame_blockUser, .add-api-key, .icon-list.userListMarker"
+    )
+    .forEach((element) => {
+      element.addEventListener("click", (e) => {
+        const facebox = document.querySelector("#facebox");
+        if (!facebox) return;
+        facebox.style.background = themeColor;
+        const popup = facebox.querySelector(".popup");
+        popup && (popup.style.background = themeColor);
+        const content = facebox.querySelector(".content");
+        content && (content.style.background = themeColor);
+        const pre = facebox.querySelector("pre");
+        pre && (pre.style.fontSize = "14px");
       });
+    });
+
+  document.querySelectorAll(".source-popup").forEach((element) => {
+    element.style.background = themeColor;
+    element.querySelectorAll("pre").forEach((element) => {
+      element.style.padding = "8px";
     });
   });
+  document
+    .querySelectorAll(".input, .output, .answer, .checker")
+    .forEach((element) => {
+      element.style.background = themeColor2;
+      element.style.fontSize = "14px";
+      element.style.padding = "8px";
+    });
 
   document.querySelectorAll(".popup .content").forEach((element) => {
     element.style.background = themeColor2;
@@ -267,17 +287,8 @@ const handleDarkMode = () => {
     document.querySelectorAll("ul").forEach((element) => {
       element.style.color = lightText;
     });
-
   document
-    .querySelectorAll(".second-level-menu-list li.backLava")
-    .forEach((element) => (element.background = whiteText));
-
-  document.querySelectorAll("li.current").forEach((element) => {
-    element.style.borderBottom = `3px solid ${blueColor1}`;
-  });
-
-  document
-    .querySelectorAll(".topic .title a, .title a, .title p")
+    .querySelectorAll(".topic .title a, .title a, .title p, .title")
     .forEach((element) => {
       element.style.setProperty("color", blueColor1, "important");
     });
@@ -639,10 +650,6 @@ const handleDarkMode = () => {
     });
   });
 
-  document.querySelectorAll(".welldone").forEach((element) => {
-    element.style.color = green1;
-  });
-
   document
     .querySelectorAll(".field-name._SidebarSettingsPage_field-name")
     .forEach((element) => {
@@ -654,10 +661,13 @@ const handleDarkMode = () => {
   ========================================================*/
   const inputStyle = (element) => {
     element.style.background = themeColor2;
+    element.style.setProperty("background", themeColor2, "important");
     element.style.color = lightText;
+    element.style.setProperty("color", lightText, "important");
     element.style.fontSize = "14px";
     element.style.border = `1px solid ${whiteText}`;
     element.style.borderRadius = "4px";
+    element.style.resize = "vertical";
   };
   document.querySelectorAll("input, textarea").forEach((element) => {
     if (
@@ -667,13 +677,22 @@ const handleDarkMode = () => {
       element.name === "email" ||
       element.name === "firstName" ||
       element.name === "lastName" ||
-      element.name === "lastName" ||
       element.name === "handleOrEmail" ||
       element.name === "submittedProblemCode" ||
       element.name === "judgedTestCount" ||
       element.name === "title" ||
       element.name === "content" ||
-      element.name === "comment"
+      element.name === "comment" ||
+      element.name === "replyContent" ||
+      element.name === "handle" ||
+      element.name === "newKeyName" ||
+      element.name === "englishName" ||
+      element.name === "englishDescription" ||
+      element.name === "websiteUrl" ||
+      element.name === "input" ||
+      element.name === "output" ||
+      element.name === "startDay" ||
+      element.name === "startTime"
     ) {
       inputStyle(element);
     }
@@ -699,6 +718,13 @@ const handleDarkMode = () => {
     element.style.color = lightText;
     element.style.background = themeColor;
   });
+  document.querySelectorAll(".wysiwyg iframe").forEach((element) => {
+    element.style.background = themeColor2;
+    element.style.color = lightText;
+    element.contentDocument.body.style.color = lightText;
+    element.contentDocument.body.style.letterSpacing = "1px";
+  });
+
   /*==========================================================
   ========================= Navbar animation ==================
   ========================================================*/
@@ -727,72 +753,6 @@ const handleDarkMode = () => {
         });
       });
     });
-  /*==========================================================
-  ========================= Navbar animation ==================
-  ========================================================*/
-
-  document.querySelectorAll(".backLava").forEach((element) => {
-    element.innerHTML = "";
-  });
-
-  document.querySelectorAll(".second-level-menu-list ").forEach((element) => {
-    element.querySelector("li").style.background = blueColor1;
-    element.querySelector("li").style.borderRadius = "4px 4px 0 0";
-    element.querySelectorAll("li a").forEach((element) => {
-      if (element.parentElement.classList.contains("selectedLava")) {
-        element.style.color = whiteText;
-      } else {
-        element.addEventListener("mouseenter", (e) => {
-          element.style.color = whiteText;
-        });
-        element.addEventListener("mouseleave", (e) => {
-          element.style.color = blueColor1;
-        });
-      }
-    });
-  });
-
-  /* ====================================================================
-                            Math text manipulation                        
-  ======================================================================*/
-  document.querySelectorAll(".math").forEach((element) => {
-    element.style.background = "red";
-    // element = element.parentElement;
-    // console.log(element);
-    // element.innerHTML = "hello";
-    // element.style.setProperty("background", whiteText, "important");
-  });
-
-  console.log(document.querySelectorAll(".MathJax"));
-
-  /* 
-    .MathJax {
-    display: inline;
-    font-style: normal;
-    font-weight: normal;
-    line-height: normal;
-    font-size: 100%;
-    font-size-adjust: none;
-    text-indent: 0;
-    text-align: left;
-    text-transform: none;
-    letter-spacing: normal;
-    word-spacing: normal;
-    word-wrap: normal;
-    white-space: nowrap;
-    float: none;
-    direction: ltr;
-    max-width: none;
-    max-height: none;
-    min-width: 0;
-    min-height: 0;
-    border: 0;
-    padding: 0;
-    margin: 0;
-    background: white;
-    padding: 4px 8px;
-}
-    */
 
   document
     .querySelectorAll(".status-filter-form-part label")
@@ -801,15 +761,108 @@ const handleDarkMode = () => {
       element.style.display = "inline-block";
     });
 
-  document.querySelectorAll(".verdict-rejected").forEach((element) => {
-    element.style.color = blueColor1;
+  document.querySelectorAll(".verdict-accepted").forEach((element) => {
+    element.style.color = green1;
   });
+  document
+    .querySelectorAll(".verdict-rejected, .verdict-unsuccessful-challenge")
+    .forEach((element) => {
+      element.style.color = blueColor1;
+    });
 
   document.addEventListener("load", (e) => {
     document
       .querySelectorAll(".mrow")
       .forEach((element) => (element.style.color = "white"));
   });
+
+  const styleElement = document.createElement("style");
+  styleElement.innerHTML = `
+   #facebox .content {
+    background: ${themeColor};
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    border-radius: 4px;
+    box-sizing: border-box
+  }
+  .unsuccessfulChallengeCount{
+    color: ${lightText} !important;
+  }
+  .successfulChallengeCount{
+    color: ${green1} !important;
+  }
+  .cell-rejected{
+    color: ${blueColor1} !important;
+  }
+  .mrow, .likeCount, .likeState.icon-thumbs-up{
+    color: ${lightText};
+  }
+  .spoiler-content{
+    background: ${themeColor};
+    color: ${lightText} !important;
+  }
+  .spoiler-content .ttypography p{
+    color: ${lightText} !important;
+  }
+  .spoiler .spoiler-content a{
+    color: ${blueColor1} !important;
+  }
+  .ace_layer.ace_print-margin-layer{
+    background: ${themeColor2};
+  }
+  .ace_keyword, .ace_storage.ace_type{
+    color: ${ace_keyword_color} !important;
+  }
+  .ace_operator{
+    color: ${"#6c757d"} !important;
+  }
+  .ace_constant.ace_other{
+    color: ${"#dee2e6"} !important;
+  }
+  .ace_string, .ace_numeric {
+    color: ${"#0496ff"} !important;
+  }
+  .ace_comment {
+    color: ${"#bcb8b1"} !important;
+  }
+  .ace_operator {
+    color: ${"#eae2b7"} !important;
+  }
+  .ace_function {
+    color: ${"#8338ec"} !important;
+  }
+  .ace-chrome .ace_marker-layer .ace_selection {
+    background: ${themeColor} !important;
+  }
+  .com{
+    color: ${red1};
+  }
+  .verdict_type.welldone{
+    color: ${green1} !important;
+  }
+  .verdict_type.error{
+    color: ${red1} !important;
+  }
+  .second-level-menu-list li a{
+    border-radius: 4px;
+    transition: all 0.3s;
+    padding: 2px 4px;
+  }
+  .second-level-menu-list li a:hover, .selectedLava a, .current.selectedLava a{
+    background: ${blueColor1} !important;
+    color: ${whiteText} !important;
+  }
+  .backLava{
+    display: none !important;
+    background-image: none !important;
+    background: ${blueColor1} !important;
+  }
+  .menu-list li.current{
+    border-color: ${blueColor1};
+  }
+  `;
+
+  document.head.appendChild(styleElement);
 };
 
 handleDarkMode();
