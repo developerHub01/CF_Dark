@@ -207,17 +207,6 @@ const handleDarkMode = (themeColor1, themeColor2, themeColor3) => {
       element.querySelectorAll(".name").forEach((element) => {
         element.style.paddingBottom = "5px";
         element.style.display = "inline-block";
-
-        const verdictElement = element.parentElement.previousElementSibling;
-        if (verdictElement.classList.contains("verdict_infoline")) {
-          verdictElement.querySelectorAll("div").forEach((element) => {
-            if (element.classList.contains("welldone")) {
-              element.style.color = green1;
-              element.style.setProperty("color", green1, "important");
-              element.style.background = green1;
-            }
-          });
-        }
       });
     });
 
@@ -901,6 +890,30 @@ const handleDarkMode = (themeColor1, themeColor2, themeColor3) => {
   }
   .lit{
     color: ${green2} !important;
+  }
+
+
+
+  div::-webkit-scrollbar,
+  body::-webkit-scrollbar,
+  pre::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+    background-color: #ddd;
+    border-radius: 5px;
+  }
+
+  div::-webkit-scrollbar-thumb,
+  body::-webkit-scrollbar-thumb,
+  pre::-webkit-scrollbar-thumb {
+    background-color: #666;
+    border-radius: 5px;
+  }
+
+  div::-webkit-scrollbar-thumb:hover,
+  body::-webkit-scrollbar-thumb:hover,
+  pre::-webkit-scrollbar-thumb:hover {
+    background-color: #333;
   }
   `;
 
