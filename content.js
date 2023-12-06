@@ -222,12 +222,6 @@ const handleDarkMode = (themeColor1, themeColor2, themeColor3) => {
     });
 
   document
-    .querySelectorAll(".infoline.verdict_infoline .verdict_type.welldone")
-    .forEach((element) => {
-      element.style.background = "red";
-      element.style.setProperty("background", "red", "important");
-    });
-  document
     .querySelectorAll(
       ".view-protocol, .view-source, ._UserTalkBlacklistFrame_blockUser, .add-api-key, .icon-list.userListMarker"
     )
