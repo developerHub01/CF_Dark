@@ -11,6 +11,7 @@ const warningColor = "#ff7b00";
 const green1 = "#29bf12";
 const red1 = "#ef233c";
 const purpel1 = "#f20089";
+const pink1 = "#ff0a54";
 const testCaseColor1 = "#121212";
 const testCaseColor2 = "#262626";
 const testCaseColor3 = "#050505";
@@ -149,7 +150,7 @@ const handleDarkMode = () => {
   document.querySelectorAll(".sample-test").forEach((element) => {
     element.style.setProperty("color", themeColor, "important");
     element.querySelectorAll(".test-example-line, pre").forEach((element) => {
-      element.style.setProperty("background", themeColor, "important");
+      element.style.setProperty("background", themeColor2, "important");
       element.style.setProperty("color", lightText, "important");
       element.style.setProperty("font-size", "14px", "important");
       element.style.setProperty("font-weight", "800", "important");
@@ -168,6 +169,87 @@ const handleDarkMode = () => {
       testCaseColor3,
       testCaseColor4
     );
+  });
+
+  /*==========================================================
+                        Submission problem details 
+  ============================================================*/
+  document.querySelectorAll(".verdict_type.welldone").forEach((element) => {
+    element.style.color = green1;
+    element.style.setProperty("color", green1, "important");
+  });
+  document
+    .querySelectorAll(
+      ".file.input-view, .file.output-view, .file.answer-view, .file.checker-comment-view"
+    )
+    .forEach((element) => {
+      element
+        .querySelectorAll(
+          "pre.input, pre.output, pre.answer, pre.checkerComment"
+        )
+        .forEach((element) => {
+          element.style.background = themeColor2;
+          element.style.fontSize = "14px";
+          element.style.lineHeight = "1.5";
+          element.style.overflowX = "auto";
+        });
+      element.querySelectorAll(".name").forEach((element) => {
+        element.style.paddingBottom = "5px";
+        element.style.display = "inline-block";
+      });
+    });
+
+  console.log("================================");
+  // console.log(document.querySelectorAll("#facebox"));
+
+  /* ====================== */
+  document.querySelectorAll(".view-source").forEach((element) => {
+    element.addEventListener("click", (e) => {
+      console.log("================================");
+      console.log(document.querySelectorAll(".popup"));
+      document.querySelectorAll(".popup").forEach((element) => {
+        element.style.background = themeColor2;
+        console.log(element.querySelectorAll(".content"));
+        element.querySelectorAll(".content").forEach((element) => {
+          element.style.background = themeColor2;
+        });
+      });
+    });
+  });
+
+  document.querySelectorAll(".popup .content").forEach((element) => {
+    element.style.background = themeColor2;
+    element.querySelectorAll("a").forEach((element) => {
+      element.style.color = blueColor1;
+    });
+    element.querySelectorAll(".close").forEach((element) => {
+      element.style.width = "15px";
+      element.style.height = "15px";
+      element.style.display = "grid";
+      element.style.placeItems = "center";
+      element.style.borderRadius = "50%";
+      element.style.background = whiteText;
+    });
+  });
+
+  /*==========================================================
+                        Submit code editor 
+  ============================================================*/
+  document.querySelectorAll("#editor").forEach((element) => {
+    element.style.background = themeColor;
+  });
+  document
+    .querySelectorAll(".ace_layer.ace_gutter-layer.ace_folding-enabled")
+    .forEach((element) => {
+      element.style.background = themeColor;
+    });
+
+  document.querySelectorAll(".ace_line").forEach((element) => {
+    element.style.fontSize = "14px";
+    element.style.lineHeight = "1.5";
+  });
+  document.querySelectorAll(".ace_keyword").forEach((element) => {
+    element.style.setProperty("color", pink1, "important");
   });
 
   document.querySelectorAll(".sidebar-menu ul li").forEach((element) => {
@@ -352,14 +434,6 @@ const handleDarkMode = () => {
   document
     .querySelectorAll("input[type='button'], input[type='submit']")
     .forEach((element) => {
-      // element.style.setProperty("font-size", "14px", "!important");
-      // element.style.setProperty("cursor", "pointer", "!important");
-      // element.style.setProperty("background", whiteText, "!important");
-      // element.style.setProperty("color", themeColor, "!important");
-      // element.style.setProperty("border", "none", "!important");
-      // element.style.setProperty("padding", "4px 8px", "!important");
-      // element.style.setProperty("display", "4px 8px", "!important");
-      // element.style.setProperty("border-radius", "4px", "!important");
       element.style.fontSize = "14px";
       element.style.cursor = "pointer";
       element.style.background = whiteText;
@@ -565,15 +639,6 @@ const handleDarkMode = () => {
     });
   });
 
-  // document
-  //   .querySelectorAll(".second-level-menu-list li.backLava")
-  //   .forEach((element) => {
-  //     element.classList.remove("backLava");
-  //     document.querySelectorAll(".leftLava").forEach((element) => {
-  //       console.log(element.parentElement());
-  //     });
-  //   });
-
   document.querySelectorAll(".welldone").forEach((element) => {
     element.style.color = green1;
   });
@@ -587,7 +652,14 @@ const handleDarkMode = () => {
   /*==========================================================
   ========================= Input box animation ==================
   ========================================================*/
-  document.querySelectorAll("input").forEach((element) => {
+  const inputStyle = (element) => {
+    element.style.background = themeColor2;
+    element.style.color = lightText;
+    element.style.fontSize = "14px";
+    element.style.border = `1px solid ${whiteText}`;
+    element.style.borderRadius = "4px";
+  };
+  document.querySelectorAll("input, textarea").forEach((element) => {
     if (
       element.type === "password" ||
       element.type === "email" ||
@@ -596,15 +668,37 @@ const handleDarkMode = () => {
       element.name === "firstName" ||
       element.name === "lastName" ||
       element.name === "lastName" ||
-      element.name === "handleOrEmail"
+      element.name === "handleOrEmail" ||
+      element.name === "submittedProblemCode" ||
+      element.name === "judgedTestCount" ||
+      element.name === "title" ||
+      element.name === "content" ||
+      element.name === "comment"
     ) {
-      element.style.background = themeColor2;
-      element.style.color = lightText;
-      element.style.fontSize = "14px";
-      element.style.border = "none";
+      inputStyle(element);
     }
   });
+  document.querySelectorAll("select, .ac_input").forEach((element) => {
+    inputStyle(element);
+    element.style.display = "inline-block";
+  });
 
+  document.querySelectorAll(".smaller.add-tags-row").forEach((element) => {
+    element.addEventListener("click", (e) => {
+      document.querySelectorAll(".ac_input").forEach((element) => {
+        inputStyle(element);
+        element.style.display = "inline-block";
+      });
+    });
+  });
+
+  /*==========================================================
+  ========================= Let's talk ==================
+  ========================================================*/
+  document.querySelectorAll(".talk-text a div").forEach((element) => {
+    element.style.color = lightText;
+    element.style.background = themeColor;
+  });
   /*==========================================================
   ========================= Navbar animation ==================
   ========================================================*/
@@ -699,6 +793,23 @@ const handleDarkMode = () => {
     padding: 4px 8px;
 }
     */
+
+  document
+    .querySelectorAll(".status-filter-form-part label")
+    .forEach((element) => {
+      element.style.paddingBottom = "5px";
+      element.style.display = "inline-block";
+    });
+
+  document.querySelectorAll(".verdict-rejected").forEach((element) => {
+    element.style.color = blueColor1;
+  });
+
+  document.addEventListener("load", (e) => {
+    document
+      .querySelectorAll(".mrow")
+      .forEach((element) => (element.style.color = "white"));
+  });
 };
 
 handleDarkMode();

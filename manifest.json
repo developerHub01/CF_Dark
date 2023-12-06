@@ -7,7 +7,14 @@
   "content_scripts": [
     {
       "matches": ["https://codeforces.com/*"],
-      "js": ["content.js"]
+      "js": ["content.js"],
+      "resources": ["style.css"]
+    }
+  ],
+  "web_accessible_resources": [
+    {
+      "resources": ["style.css"],
+      "matches": ["https://codeforces.com/*"]
     }
   ],
   "action": {
