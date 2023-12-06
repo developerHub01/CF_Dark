@@ -4,3 +4,61 @@
   box-sizing: border-box;
   outline: none;
 }
+.wrapper {
+  width: 200px;
+  padding: 20px;
+  background: #212121;
+  color: white;
+  text-align: center;
+  display: grid;
+  place-content: center;
+  gap: 15px;
+}
+h2 {
+  font-size: 20px;
+  text-transform: capitalize;
+}
+.plates {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+}
+button {
+  width: 100%;
+  background: white;
+  color: #212121;
+  cursor: pointer;
+  user-select: none;
+  padding: 10px;
+  border-radius: 8px;
+  font-size: 20px;
+  border: 2px solid #fff;
+  transition: all 0.2s ease-in-out;
+}
+button:hover,
+button.active {
+  transform: scale(0.8);
+}
+.t0 {
+  background: #fff;
+}
+.t1 {
+  background: #212121;
+  color: #fff;
+}
+.t2 {
+  background: #001523;
+  color: #fff;
+}
+.t3 {
+  background: #2f0e07;
+  color: #fff;
+}
+.t4 {
+  background: #141414;
+  color: #fff;
+}
+.t5 {
+  background: #000b25;
+  color: #fff;
+}

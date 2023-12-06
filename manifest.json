@@ -17,6 +17,7 @@
       "24": "images/assets/24.png",
       "16": "images/assets/16.png"
     },
+    "default_popup": "popup.html",
     "default_title": "CF Dark"
   },
   "icons": {

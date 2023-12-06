@@ -1,52 +1,29 @@
-chrome.storage.local.get("theme").then((result) => {
-  const theme = result?.theme;
-  if (!result || !theme) return;
-  else if (!result || theme?.themeName === "default") {
-    chrome.storage.local.remove(`theme`);
-    return location.reload();
-  } else
-    handleDarkMode(theme.themeColor1, theme.themeColor2, theme.themeColor3);
-});
-chrome.storage.onChanged.addListener((changes, areaName) => {
-  chrome.storage.local.get("theme").then((result) => {
-    const theme = result?.theme;
-    if (!result || !theme) return;
-    else if (!result || theme?.themeName === "default") {
-      {
-        chrome.storage.local.remove(`theme`);
-        return location.reload();
-      }
-    } else
-      handleDarkMode(theme.themeColor1, theme.themeColor2, theme.themeColor3);
-  });
-});
-
-const handleDarkMode = (themeColor1, themeColor2, themeColor3) => {
-  const borderColor1 = "#444444";
-  const lightText = "#f1f1f1";
-  const theneText = "#f5f3f4";
-  const whiteText = "#ffffff";
-  const blueColor1 = "#0496ff";
-  const blueColor2 = "#0d41e1";
-  const warningColor = "#ff7b00";
-  const green1 = "#29bf12";
-  const green2 = "#08a045";
-  const red1 = "#d90429";
-  const purpel1 = "#f20089";
-  const pink1 = "#ff0a54";
-  const yellow1 = "#ff8800";
-  const testCaseColor1 = "#121212";
-  const testCaseColor2 = "#262626";
-  const testCaseColor3 = "#050505";
-  const testCaseColor4 = "#1c1c1c";
-  const ace_keyword_color = "#e21fc6";
-  const sortIcon = "https://i.ibb.co/W6RC8qW/sortIcon.png";
-  const logo = "https://i.ibb.co/7XV6bF3/logo.png";
-  const ascIcon = "https://i.ibb.co/Dk0T4FW/asc.png";
-  const descIcon = "https://i.ibb.co/PC9wcqY/desc.png";
-  const searchIcon = "https://i.ibb.co/6BmWvt3/search.png";
-
-  document.body.style.background = `${themeColor1}`;
+const themeColor = "#212121";
+const themeColor2 = "#111111";
+const themeColor3 = "#252422";
+const borderColor1 = "#444444";
+const lightText = "#f1f1f1";
+const theneText = "#f5f3f4";
+const whiteText = "#ffffff";
+const blueColor1 = "#0496ff";
+const blueColor2 = "#0d41e1";
+const warningColor = "#ff7b00";
+const green1 = "#29bf12";
+const red1 = "#d90429";
+const purpel1 = "#f20089";
+const pink1 = "#ff0a54";
+const testCaseColor1 = "#121212";
+const testCaseColor2 = "#262626";
+const testCaseColor3 = "#050505";
+const testCaseColor4 = "#1c1c1c";
+const ace_keyword_color = "#e21fc6";
+const sortIcon = "https://i.ibb.co/W6RC8qW/sortIcon.png";
+const logo = "https://i.ibb.co/7XV6bF3/logo.png";
+const ascIcon = "https://i.ibb.co/Dk0T4FW/asc.png";
+const descIcon = "https://i.ibb.co/PC9wcqY/desc.png";
+const searchIcon = "https://i.ibb.co/6BmWvt3/search.png";
+const handleDarkMode = () => {
+  document.body.style.background = `${themeColor}`;
   document.body.style.color = `${lightText}`;
 
   // logo
@@ -83,7 +60,7 @@ const handleDarkMode = (themeColor1, themeColor2, themeColor3) => {
       "._CatalogHistorySidebarFrame_value ins, ._CatalogHistorySidebarFrame_value del"
     )
     .forEach((element) => {
-      element.style.color = themeColor1;
+      element.style.color = themeColor;
     });
 
   document.querySelectorAll(".icon-file-text-alt").forEach((item) => {
@@ -95,7 +72,7 @@ const handleDarkMode = (themeColor1, themeColor2, themeColor3) => {
   });
   document.querySelectorAll(".menu-box").forEach((element) => {
     element.style.border = `1px solid ${borderColor1}`;
-    element.style.background = `${themeColor1}`;
+    element.style.background = `${themeColor}`;
   });
 
   document.querySelectorAll(".rated-user, .user-rank").forEach((element) => {
@@ -129,9 +106,8 @@ const handleDarkMode = (themeColor1, themeColor2, themeColor3) => {
     });
 
   /*==========================================================
-                        Test case 
+                        Test case
   ============================================================*/
-
   const handleThemeOfTestCase = (element, className, bgColor1, bgColor2) => {
     element.querySelectorAll(`.${className}`).forEach((element) => {
       element.style.background = bgColor1;
@@ -163,7 +139,7 @@ const handleDarkMode = (themeColor1, themeColor2, themeColor3) => {
   };
 
   document.querySelectorAll(".sample-test").forEach((element) => {
-    element.style.setProperty("color", themeColor1, "important");
+    element.style.setProperty("color", themeColor, "important");
     element.querySelectorAll(".test-example-line, pre").forEach((element) => {
       element.style.setProperty("background", themeColor2, "important");
       element.style.setProperty("color", lightText, "important");
@@ -187,7 +163,7 @@ const handleDarkMode = (themeColor1, themeColor2, themeColor3) => {
   });
 
   /*==========================================================
-                        Submission problem details 
+                        Submission problem details
   ============================================================*/
   document
     .querySelectorAll(
@@ -235,18 +211,18 @@ const handleDarkMode = (themeColor1, themeColor2, themeColor3) => {
       element.addEventListener("click", (e) => {
         const facebox = document.querySelector("#facebox");
         if (!facebox) return;
-        facebox.style.background = themeColor1;
+        facebox.style.background = themeColor;
         const popup = facebox.querySelector(".popup");
-        popup && (popup.style.background = themeColor1);
+        popup && (popup.style.background = themeColor);
         const content = facebox.querySelector(".content");
-        content && (content.style.background = themeColor1);
+        content && (content.style.background = themeColor);
         const pre = facebox.querySelector("pre");
         pre && (pre.style.fontSize = "14px");
       });
     });
 
   document.querySelectorAll(".source-popup").forEach((element) => {
-    element.style.background = themeColor1;
+    element.style.background = themeColor;
     element.querySelectorAll("pre").forEach((element) => {
       element.style.padding = "8px";
     });
@@ -275,15 +251,15 @@ const handleDarkMode = (themeColor1, themeColor2, themeColor3) => {
   });
 
   /*==========================================================
-                        Submit code editor 
+                        Submit code editor
   ============================================================*/
   document.querySelectorAll("#editor").forEach((element) => {
-    element.style.background = themeColor1;
+    element.style.background = themeColor;
   });
   document
     .querySelectorAll(".ace_layer.ace_gutter-layer.ace_folding-enabled")
     .forEach((element) => {
-      element.style.background = themeColor1;
+      element.style.background = themeColor;
     });
 
   document.querySelectorAll(".ace_line").forEach((element) => {
@@ -292,9 +268,6 @@ const handleDarkMode = (themeColor1, themeColor2, themeColor3) => {
   });
   document.querySelectorAll(".ace_keyword").forEach((element) => {
     element.style.setProperty("color", pink1, "important");
-  });
-  document.querySelectorAll(".ace_paren").forEach((element) => {
-    element.style.setProperty("color", yellow1, "important");
   });
 
   document.querySelectorAll(".sidebar-menu ul li").forEach((element) => {
@@ -353,7 +326,7 @@ const handleDarkMode = (themeColor1, themeColor2, themeColor3) => {
 
   document.querySelectorAll(".roundbox").forEach((element) => {
     element.style.color = `1px solid ${blueColor1}`;
-    element.style.background = themeColor1;
+    element.style.background = themeColor;
   });
 
   document.querySelectorAll(".roundbox .dark").forEach((element) => {
@@ -412,7 +385,7 @@ const handleDarkMode = (themeColor1, themeColor2, themeColor3) => {
   });
 
   document.querySelectorAll(".datatable tr").forEach((element) => {
-    element.style.background = themeColor1;
+    element.style.background = themeColor;
     element.style.border = `1px solid ${borderColor1}`;
     element.style.color = lightText;
   });
@@ -425,7 +398,7 @@ const handleDarkMode = (themeColor1, themeColor2, themeColor3) => {
       );
     element.style.setProperty(
       "background",
-      element.classList.contains("dark") ? themeColor2 : themeColor1,
+      element.classList.contains("dark") ? themeColor2 : themeColor,
       "important"
     );
     element.style.border = `1px solid ${borderColor1}`;
@@ -446,15 +419,15 @@ const handleDarkMode = (themeColor1, themeColor2, themeColor3) => {
   document.querySelectorAll("#facebox").forEach((element) => {
     element.style.background = themeColor2;
     element.querySelectorAll(".content").forEach((element) => {
-      element.style.background = themeColor1;
+      element.style.background = themeColor;
       element.querySelectorAll("form").forEach((element) => {
-        element.style.background = themeColor1;
+        element.style.background = themeColor;
       });
     });
     element
       .querySelectorAll(".alert.alert-success.ttypography ul li")
       .forEach((element) => {
-        element.style.setProperty("color", themeColor1, "important");
+        element.style.setProperty("color", themeColor, "important");
       });
 
     element.querySelectorAll(".talk-content div").forEach((element) => {
@@ -486,7 +459,7 @@ const handleDarkMode = (themeColor1, themeColor2, themeColor3) => {
     });
 
   document.querySelectorAll(".new-comments-box div").forEach((element) => {
-    element.style.background = themeColor1;
+    element.style.background = themeColor;
     element.style.color = whiteText;
   });
 
@@ -509,7 +482,7 @@ const handleDarkMode = (themeColor1, themeColor2, themeColor3) => {
   });
 
   document.querySelectorAll(".bell-details").forEach((element) => {
-    element.style.background = themeColor1;
+    element.style.background = themeColor;
     element.querySelectorAll(".bell-details__no-new").forEach((element) => {
       element.style.setProperty("color", lightText);
     });
@@ -563,7 +536,7 @@ const handleDarkMode = (themeColor1, themeColor2, themeColor3) => {
         element.style.background = lightText;
         element.style.padding = "2px";
         element.style.borderRadius = "2px";
-        element.style.color = themeColor1;
+        element.style.color = themeColor;
       });
     } else if (i == 1) {
       element.querySelectorAll("span").forEach((element) => {
@@ -645,7 +618,7 @@ const handleDarkMode = (themeColor1, themeColor2, themeColor3) => {
     element.style.setProperty("background", themeColor2, "important");
     element.style.color = lightText;
     element.addEventListener("mouseenter", (e) => {
-      element.style.setProperty("background", themeColor1, "important");
+      element.style.setProperty("background", themeColor, "important");
     });
     element.addEventListener("mouseleave", (e) => {
       element.style.setProperty("background", themeColor2, "important");
@@ -741,7 +714,7 @@ const handleDarkMode = (themeColor1, themeColor2, themeColor3) => {
   ========================================================*/
   document.querySelectorAll(".talk-text a div").forEach((element) => {
     element.style.color = lightText;
-    element.style.background = themeColor1;
+    element.style.background = themeColor;
   });
   document.querySelectorAll(".wysiwyg iframe").forEach((element) => {
     element.style.background = themeColor2;
@@ -767,14 +740,14 @@ const handleDarkMode = (themeColor1, themeColor2, themeColor3) => {
   document
     .querySelectorAll("._CatalogViewFrame_choose-time")
     .forEach((element) => {
-      element.style.background = themeColor1;
+      element.style.background = themeColor;
       element.querySelectorAll("li").forEach((element) => {
-        element.style.background = themeColor1;
+        element.style.background = themeColor;
         element.addEventListener("mouseover", () => {
           element.style.background = themeColor2;
         });
         element.addEventListener("mouseleave", () => {
-          element.style.background = themeColor1;
+          element.style.background = themeColor;
         });
       });
     });
@@ -804,7 +777,7 @@ const handleDarkMode = (themeColor1, themeColor2, themeColor3) => {
   const styleElement = document.createElement("style");
   styleElement.innerHTML = `
    #facebox .content {
-    background: ${themeColor1};
+    background: ${themeColor};
     -webkit-border-radius: 4px;
     -moz-border-radius: 4px;
     border-radius: 4px;
@@ -823,7 +796,7 @@ const handleDarkMode = (themeColor1, themeColor2, themeColor3) => {
     color: ${lightText};
   }
   .spoiler-content{
-    background: ${themeColor1};
+    background: ${themeColor};
     color: ${lightText} !important;
   }
   .spoiler-content .ttypography p{
@@ -838,6 +811,9 @@ const handleDarkMode = (themeColor1, themeColor2, themeColor3) => {
   .ace_keyword, .ace_storage.ace_type{
     color: ${ace_keyword_color} !important;
   }
+  .ace_operator{
+    color: ${"#6c757d"} !important;
+  }
   .ace_constant.ace_other{
     color: ${"#dee2e6"} !important;
   }
@@ -847,22 +823,23 @@ const handleDarkMode = (themeColor1, themeColor2, themeColor3) => {
   .ace_comment {
     color: ${"#bcb8b1"} !important;
   }
+  .ace_operator {
+    color: ${"#eae2b7"} !important;
+  }
   .ace_function {
     color: ${"#8338ec"} !important;
   }
   .ace-chrome .ace_marker-layer .ace_selection {
-    background: ${themeColor1} !important;
+    background: ${themeColor} !important;
   }
   .com{
-    color: ${red1} !important;
+    color: ${red1};
   }
   .verdict_type.welldone{
     color: ${green1} !important;
-    font-weight: bold;
   }
   .verdict_type.error{
     color: ${red1} !important;
-    font-weight: bold;
   }
   .second-level-menu-list li a{
     border-radius: 4px;
@@ -881,34 +858,8 @@ const handleDarkMode = (themeColor1, themeColor2, themeColor3) => {
   .menu-list li.current{
     border-color: ${blueColor1};
   }
-  .source-popup pre{
-    background: ${themeColor2} !important;
-  }
-  .pln{
-    color: ${lightText} !important;
-  }
-  .kwd, .ace_control{
-    color: ${blueColor1} !important;
-  }
-  .str{
-    color: ${green1} !important;
-  }
-  .typ, .ace_type{
-    color: ${pink1} !important;
-  }
-  .typ, .ace_type{
-    color: ${purpel1} !important;
-  }
-  .ace_paren.ace_lparen,
-  .ace_paren.ace_rparen,
-  .ace_operator,
-  .pun{
-    color: ${yellow1} !important;
-  }
-  .lit{
-    color: ${green2} !important;
-  }
   `;
 
   document.head.appendChild(styleElement);
 };
+handleDarkMode();
