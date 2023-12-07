@@ -95,7 +95,17 @@ const themes = [
     testCaseColor4: "#142133",
   },
 ];
-
+chrome.storage.local.get("theme").then((result) => {
+  if (!result || !result.theme || result.theme.themeName === "default") {
+    buttons[0].classList.add("active");
+  } else {
+    buttons[
+      result.theme.themeName.split("")[
+        result.theme.themeName.split("").length - 1
+      ]
+    ].classList.add("active");
+  }
+});
 buttons.forEach((element, i) => {
   element.addEventListener("click", (e) => {
     buttons.forEach((element) => {
