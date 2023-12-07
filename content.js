@@ -5,7 +5,15 @@ chrome.storage.local.get("theme").then((result) => {
     chrome.storage.local.remove(`theme`);
     return location.reload();
   } else
-    handleDarkMode(theme.themeColor1, theme.themeColor2, theme.themeColor3);
+    handleDarkMode(
+      theme.themeColor1,
+      theme.themeColor2,
+      theme.themeColor3,
+      theme.testCaseColor1,
+      theme.testCaseColor2,
+      theme.testCaseColor3,
+      theme.testCaseColor4
+    );
 });
 chrome.storage.onChanged.addListener((changes, areaName) => {
   chrome.storage.local.get("theme").then((result) => {
@@ -16,12 +24,29 @@ chrome.storage.onChanged.addListener((changes, areaName) => {
         chrome.storage.local.remove(`theme`);
         return location.reload();
       }
-    } else
-      handleDarkMode(theme.themeColor1, theme.themeColor2, theme.themeColor3);
+    } else {
+      handleDarkMode(
+        theme.themeColor1,
+        theme.themeColor2,
+        theme.themeColor3,
+        theme.testCaseColor1,
+        theme.testCaseColor2,
+        theme.testCaseColor3,
+        theme.testCaseColor4
+      );
+    }
   });
 });
 
-const handleDarkMode = (themeColor1, themeColor2, themeColor3) => {
+const handleDarkMode = (
+  themeColor1,
+  themeColor2,
+  themeColor3,
+  testCaseColor1,
+  testCaseColor2,
+  testCaseColor3,
+  testCaseColor4
+) => {
   const borderColor1 = "#444444";
   const lightText = "#f1f1f1";
   const theneText = "#f5f3f4";
@@ -35,10 +60,10 @@ const handleDarkMode = (themeColor1, themeColor2, themeColor3) => {
   const purpel1 = "#f20089";
   const pink1 = "#ff0a54";
   const yellow1 = "#ff8800";
-  const testCaseColor1 = "#121212";
-  const testCaseColor2 = "#262626";
-  const testCaseColor3 = "#050505";
-  const testCaseColor4 = "#1c1c1c";
+  // const testCaseColor1 = "#121212";
+  // const testCaseColor2 = "#262626";
+  // const testCaseColor3 = "#050505";
+  // const testCaseColor4 = "#1c1c1c";
   const ace_keyword_color = "#e21fc6";
   const sortIcon = "https://i.ibb.co/W6RC8qW/sortIcon.png";
   const logo = "https://i.ibb.co/7XV6bF3/logo.png";
@@ -700,7 +725,8 @@ const handleDarkMode = (themeColor1, themeColor2, themeColor3) => {
       element.name === "input" ||
       element.name === "output" ||
       element.name === "startDay" ||
-      element.name === "startTime"
+      element.name === "startTime" ||
+      element.name === "question"
     ) {
       inputStyle(element);
     }
