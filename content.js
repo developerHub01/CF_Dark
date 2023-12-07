@@ -60,10 +60,6 @@ const handleDarkMode = (
   const purpel1 = "#f20089";
   const pink1 = "#ff0a54";
   const yellow1 = "#ff8800";
-  // const testCaseColor1 = "#121212";
-  // const testCaseColor2 = "#262626";
-  // const testCaseColor3 = "#050505";
-  // const testCaseColor4 = "#1c1c1c";
   const ace_keyword_color = "#e21fc6";
   const sortIcon = "https://i.ibb.co/W6RC8qW/sortIcon.png";
   const logo = "https://i.ibb.co/7XV6bF3/logo.png";
@@ -125,7 +121,7 @@ const handleDarkMode = (
 
   document.querySelectorAll(".rated-user, .user-rank").forEach((element) => {
     element.style.background = whiteText;
-    element.style.padding = "2px 4px";
+    element.style.padding = "1px 4px";
     element.style.margin = "1px 2px";
     element.style.borderRadius = "4px";
     element.style.display = "inline-block";
@@ -374,7 +370,7 @@ const handleDarkMode = (
   });
 
   document.querySelectorAll(".rated-user.user-legendary").forEach((element) => {
-    element.style.padding = "4px 8px";
+    element.style.padding = "1.5px 8px";
     element.style.margin = "2px 0";
     element.style.background = "#ffffff";
   });
