@@ -889,7 +889,11 @@ const handleDarkMode = (themeColor1, themeColor2, themeColor3) => {
     color: ${yellow1} !important;
   }
   .lit{
-    color: ${green2} !important;
+    color: ${green2};
+  }
+  .bordertable thead tr th{
+    background: ${themeColor2} !important;
+    color: ${lightText} !important;
   }
 
 
