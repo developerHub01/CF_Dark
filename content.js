@@ -53,10 +53,11 @@ const handleDarkMode = (
   const whiteText = "#ffffff";
   const blueColor1 = "#0496ff";
   const blueColor2 = "#0d41e1";
-  const warningColor = "#ff7b00";
+  const warningColor = "#ff4800";
   const green1 = "#29bf12";
   const green2 = "#08a045";
   const red1 = "#d90429";
+  const red2 = "#ef233c";
   const purpel1 = "#f20089";
   const pink1 = "#ff0a54";
   const yellow1 = "#ff8800";
@@ -306,10 +307,6 @@ const handleDarkMode = (
   });
 
   document
-    .querySelectorAll("div.ttypography pre, div.ttypography code")
-    .forEach((element) => {});
-
-  document
     .querySelectorAll("a")
     .forEach((element) => (element.style.color = blueColor1));
   document.querySelectorAll("ul") &&
@@ -434,6 +431,49 @@ const handleDarkMode = (
     );
     element.style.border = `1px solid ${borderColor1}`;
     element.style.color = `${lightText}!important`;
+
+    const problemAcceptRejectPreview = (trClass, color) => {
+        element.classList.contains("act") &&
+        element.parentElement.classList.contains(trClass) &&
+        element.style.setProperty("background", color, "important");
+        element.classList.contains("left") &&
+        element.parentElement.classList.contains(trClass) &&
+        element.style.setProperty(
+          "border-left",
+          `6px solid ${color}`,
+          "important"
+        );
+    };
+    problemAcceptRejectPreview("accepted-problem", green2);
+    problemAcceptRejectPreview("rejected-problem", red2);
+
+    // element.classList.contains("dark") &&
+    //   element.classList.contains("act") &&
+    //   element.parentElement.classList.contains("accepted-problem") &&
+    //   element.style.setProperty("background", green2, "important");
+    // element.classList.contains("dark") &&
+    //   element.classList.contains("id") &&
+    //   element.classList.contains("left") &&
+    //   element.parentElement.classList.contains("accepted-problem") &&
+    //   element.style.setProperty(
+    //     "border-left",
+    //     `6px solid ${green2}`,
+    //     "important"
+    //   );
+
+    // element.classList.contains("dark") &&
+    //   element.classList.contains("act") &&
+    //   element.parentElement.classList.contains("rejected-problem") &&
+    //   element.style.setProperty("background", red2, "important");
+    // element.classList.contains("dark") &&
+    //   element.classList.contains("id") &&
+    //   element.classList.contains("left") &&
+    //   element.parentElement.classList.contains("rejected-problem") &&
+    //   element.style.setProperty(
+    //     "border-left",
+    //     `6px solid ${red2}`,
+    //     "important"
+    //   );
   });
 
   document.querySelectorAll(".notice, .countdown").forEach((element) => {
@@ -918,6 +958,11 @@ const handleDarkMode = (
     color: ${lightText} !important;
   }
 
+  .roundbox.highlight-blue.sidebox.borderTopRound{
+    background: ${warningColor} !important;
+    border: none;
+    padding-bottom: 5px;
+  } 
 
 
   div::-webkit-scrollbar,
