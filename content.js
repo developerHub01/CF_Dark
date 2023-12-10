@@ -963,6 +963,9 @@ const handleDarkMode = (
     border: none;
     padding-bottom: 5px;
   } 
+  .comment-content{
+    color: ${whiteText} !important;
+  }
 
 
   div::-webkit-scrollbar,
