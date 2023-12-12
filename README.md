@@ -6,6 +6,12 @@
 
 ## There are 10 themes available including default theme.
 
+### Theme 1 (Default Theme):
+
+<img src="https://raw.githubusercontent.com/developerHub01/CF_Dark/main/preview_images/theme0.png">
+
+---
+
 ### Theme 1:
 
 <img src="https://raw.githubusercontent.com/developerHub01/CF_Dark/main/preview_images/theme1.png">
