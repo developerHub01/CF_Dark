@@ -94,16 +94,30 @@ const themes = [
     testCaseColor3: "#0a141f",
     testCaseColor4: "#142133",
   },
+  {
+    themeName: "t10",
+    themeColor1: "#190028",
+    themeColor2: "#11001c",
+    themeColor3: "#190028",
+    testCaseColor1: "#190028",
+    testCaseColor2: "#32004f",
+    testCaseColor3: "#220135",
+    testCaseColor4: "#3a015c",
+  },
 ];
 chrome.storage.local.get("theme").then((result) => {
   if (!result || !result.theme || result.theme.themeName === "default") {
     buttons[0].classList.add("active");
+    document.querySelector(".wrapper").style.background = "#212121";
   } else {
-    buttons[
+    const index =
       result.theme.themeName.split("")[
         result.theme.themeName.split("").length - 1
-      ]
-    ].classList.add("active");
+      ];
+    buttons[index].classList.add("active");
+
+    document.querySelector(".wrapper").style.background =
+      themes[index]?.themeColor1;
   }
 });
 buttons.forEach((element, i) => {
@@ -116,5 +130,7 @@ buttons.forEach((element, i) => {
     chrome.storage.local.set({
       theme: themes[i],
     });
+    document.querySelector(".wrapper").style.background =
+      themes[i]?.themeColor1;
   });
 });

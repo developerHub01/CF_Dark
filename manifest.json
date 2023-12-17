@@ -2,7 +2,7 @@
   "manifest_version": 3,
   "name": "CF Dark",
   "version": "1.0",
-  "description": "CF Dark",
+  "description": "Dark Mode for Codeforces. It have about 10 beautiful themes.",
   "permissions": ["activeTab", "storage"],
   "content_scripts": [
     {

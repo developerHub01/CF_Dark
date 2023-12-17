@@ -5,7 +5,7 @@
   outline: none;
 }
 .wrapper {
-  width: 200px;
+  width: 280px;
   padding: 20px;
   background: #212121;
   color: white;
@@ -43,6 +43,7 @@ button.active {
 .t0 {
   background: #fff;
   color: #212121;
+  grid-column: span 2;
 }
 .t1 {
   background: #212121;
@@ -70,4 +71,7 @@ button.active {
 }
 .t9 {
   background: #142133;
+}
+.t10 {
+  background: #190028;
 }
