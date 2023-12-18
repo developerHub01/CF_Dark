@@ -848,7 +848,27 @@ const handleDarkMode = (
 
   const styleElement = document.createElement("style");
   styleElement.innerHTML = `
-   #facebox .content {
+  .roundbox {
+    background: ${themeColor1} !important;
+  }
+  .roundbox a.unsolved_problem{
+    color: ${blueColor1} !important;
+  }
+
+  .caption.titled{
+    color: ${blueColor1} !important;
+  }
+
+  .sidebar-menu ul li:hover, 
+  .sidebar-menu ul li.active{
+    background: ${blueColor1} !important;
+  }
+  .sidebar-menu ul li:hover a, 
+  .sidebar-menu ul li.active a{
+    color: ${whiteText} !important;
+  }
+
+  #facebox .content {
     background: ${themeColor1};
     -webkit-border-radius: 4px;
     -moz-border-radius: 4px;

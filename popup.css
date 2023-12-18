@@ -14,6 +14,43 @@
   place-content: center;
   gap: 15px;
 }
+.authorInfo{
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.authorInfo p{
+  font-size: 20px;
+  text-transform: capitalize;
+  font-weight: 600;
+}
+.authorLinkes {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+}
+.authorLinkes a {
+  display: block;
+}
+.authorLinkes a img {
+  width: 50px;
+  height: 50px;
+  object-fit: contain;
+  transform: scale(0.8);
+  animation: authorInfoIconAnim 0.5s linear infinite alternate;
+}
+.authorLinkes a:nth-of-type(2) img {
+  animation-delay: 0.5s;
+}
+@keyframes authorInfoIconAnim {
+  0% {
+    transform: scale(0.9);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
 h2 {
   font-size: 20px;
   text-transform: capitalize;

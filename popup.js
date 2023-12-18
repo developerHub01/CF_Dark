@@ -108,16 +108,18 @@ const themes = [
 chrome.storage.local.get("theme").then((result) => {
   if (!result || !result.theme || result.theme.themeName === "default") {
     buttons[0].classList.add("active");
-    document.querySelector(".wrapper").style.background = "#212121";
+    document
+      .querySelector(".wrapper")
+      .style.setProperty("background", "#212121", "important");
   } else {
     const index =
-      result.theme.themeName.split("")[
-        result.theme.themeName.split("").length - 1
+      result.theme.themeName.split("t")[
+        result.theme.themeName.split("t").length - 1
       ];
     buttons[index].classList.add("active");
-
-    document.querySelector(".wrapper").style.background =
-      themes[index]?.themeColor1;
+    document
+      .querySelector(".wrapper")
+      .style.setProperty("background", themes[index]?.themeColor1, "important");
   }
 });
 buttons.forEach((element, i) => {
