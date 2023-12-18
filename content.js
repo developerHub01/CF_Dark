@@ -433,10 +433,10 @@ const handleDarkMode = (
     element.style.color = `${lightText}!important`;
 
     const problemAcceptRejectPreview = (trClass, color) => {
-        element.classList.contains("act") &&
+      element.classList.contains("act") &&
         element.parentElement.classList.contains(trClass) &&
         element.style.setProperty("background", color, "important");
-        element.classList.contains("left") &&
+      element.classList.contains("left") &&
         element.parentElement.classList.contains(trClass) &&
         element.style.setProperty(
           "border-left",
@@ -965,6 +965,15 @@ const handleDarkMode = (
   } 
   .comment-content{
     color: ${whiteText} !important;
+  }
+
+
+  .flot-tick-label.tickLabel{
+    color: ${lightText};
+  }
+  #userActivityGraph .month,
+  #userActivityGraph .wday{
+    fill: ${lightText} !important;
   }
 
 
