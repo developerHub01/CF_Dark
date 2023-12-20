@@ -85,6 +85,7 @@ button.active {
   font-size: 20px;
   text-transform: capitalize;
   font-weight: 600;
+  color: #fff;
 }
 .authorLinkes {
   display: flex;
