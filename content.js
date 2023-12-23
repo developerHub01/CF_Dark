@@ -740,6 +740,7 @@ const handleDarkMode = (
   };
   document.querySelectorAll("input, textarea").forEach((element) => {
     if (
+      element.name !== "query" ||
       element.type === "password" ||
       element.type === "email" ||
       element.name === "password" ||
@@ -762,7 +763,10 @@ const handleDarkMode = (
       element.name === "output" ||
       element.name === "startDay" ||
       element.name === "startTime" ||
-      element.name === "question"
+      element.name === "question" ||
+      element.name === "localizedFirstName" ||
+      element.name === "localizedLastName" ||
+      element.name === "birthday"
     ) {
       inputStyle(element);
     }
