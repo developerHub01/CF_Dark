@@ -1,0 +1,134 @@
+---
+---
+
+<input type="checkbox" id="comparison-toggle" class="hidden" />
+
+<section
+  id="comparison"
+  class="py-32 border-t border-border bg-background relative overflow-hidden"
+  data-reveal
+>
+  <div class="container mx-auto px-4 max-w-6xl">
+    <div class="text-center mb-16">
+      <h2
+        class="text-white text-4xl md:text-5xl font-black mb-6 tracking-tight uppercase"
+      >
+        Before <span class="text-primary font-black">vs</span> After.
+      </h2>
+      <p
+        class="text-body text-lg md:text-xl max-w-xl mx-auto leading-relaxed font-medium"
+      >
+        Compare the default Codeforces UI with our optimized dark theme. Zero
+        eye strain, high contrast performance.
+      </p>
+    </div>
+
+    <!-- Browser Layout (Rounded XL - 12px) -->
+    <div
+      class="bg-surface border border-border p-4 rounded-xl overflow-hidden shadow-2xl relative"
+    >
+      <!-- Minimalist Header -->
+      <div
+        class="flex items-center gap-2 py-4 bg-surface rounded-t-xl border-b border-border"
+      >
+        <div class="flex gap-2">
+          <div class="size-3.5 rounded-full bg-red-500"></div>
+          <div class="size-3.5 rounded-full bg-yellow-500"></div>
+          <div class="size-3.5 rounded-full bg-green-500"></div>
+        </div>
+      </div>
+
+      <!-- Slider Area -->
+      <div
+        id="cf-slider"
+        class="relative w-full aspect-video cursor-ew-resize select-none bg-black overflow-hidden rounded-b-xl px-0"
+      >
+        <!-- Light State -->
+        <img
+          id="cf-img-after"
+          src="/preview_images/theme0.png"
+          alt="Original"
+          class="absolute inset-0 w-full h-full object-cover object-top-left"
+          draggable="false"
+        />
+
+        <!-- Dark State -->
+        <img
+          id="cf-img-before"
+          src="/preview_images/theme1.png"
+          alt="Dark"
+          class="absolute inset-0 w-full h-full object-cover object-top-left z-10 [clip-path:inset(0_50%_0_0)]"
+          draggable="false"
+        />
+
+        <!-- Handle Line (Theme Blue) -->
+        <div
+          id="cf-divider"
+          class="absolute top-0 bottom-0 left-1/2 w-1 bg-primary shadow-[0_0_20px_rgba(59,130,246,0.3)] -translate-x-1/2 z-20 pointer-events-none"
+        >
+          <!-- Handle Thumb -->
+          <div
+            class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-white flex items-center justify-center shadow-2xl border-2 border-primary"
+          >
+            <i class="ph ph-arrows-left-right text-primary text-xl"></i>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script is:inline>
+    (function () {
+      const slider = document.getElementById("cf-slider");
+      const before = document.getElementById("cf-img-before");
+      const div = document.getElementById("cf-divider");
+      if (!slider || !before || !div) return;
+
+      let drag = false;
+
+      const setPos = (x) => {
+        const rect = slider.getBoundingClientRect();
+        const pct = Math.max(
+          0,
+          Math.min(100, ((x - rect.left) / rect.width) * 100),
+        );
+        before.style.clipPath = `inset(0 ${100 - pct}% 0 0)`;
+        div.style.left = `${pct}%`;
+      };
+
+      slider.addEventListener("mousedown", (e) => {
+        drag = true;
+        setPos(e.clientX);
+      });
+      window.addEventListener("mousemove", (e) => {
+        if (drag) setPos(e.clientX);
+      });
+      window.addEventListener("mouseup", () => {
+        drag = false;
+      });
+      slider.addEventListener(
+        "touchstart",
+        (e) => {
+          drag = true;
+          setPos(e.touches[0].clientX);
+        },
+        { passive: true },
+      );
+      window.addEventListener(
+        "touchmove",
+        (e) => {
+          if (drag) setPos(e.touches[0].clientX);
+        },
+        { passive: true },
+      );
+      window.addEventListener("touchend", () => {
+        drag = false;
+      });
+
+      setPos(
+        slider.getBoundingClientRect().left +
+          slider.getBoundingClientRect().width / 2,
+      );
+    })();
+  </script>
+</section>

@@ -1,0 +1,23 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Hero from "../components/Hero.astro";
+import Features from "../components/Features.astro";
+import Comparison from "../components/Comparison.astro";
+import Themes from "../components/Themes.astro";
+import Installation from "../components/Installation.astro";
+import Footer from "../components/Footer.astro";
+---
+
+<Layout
+  title="CF_Dark | Beautiful Dark Theme for Codeforces"
+  description="Transform your Codeforces experience with a modern, eye-friendly dark theme. Open source and easy to install."
+>
+  <main class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 overflow-hidden">
+    <Hero />
+    <Comparison />
+    <Themes />
+    <Features />
+    <Installation showChromeStore={true} />
+  </main>
+  <Footer />
+</Layout>

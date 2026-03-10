@@ -1,0 +1,58 @@
+---
+const features = [
+  {
+    title: "Fast Display",
+    description:
+      "Built with pure CSS to ensure near-zero performance overhead during contests.",
+  },
+  {
+    title: "High Contrast",
+    description:
+      "Deep dark backgrounds optimized for eye comfort and visual clarity.",
+  },
+  {
+    title: "UI Precision",
+    description:
+      "Every element is manually adjusted for perfect alignment and consistency.",
+  },
+  {
+    title: "Engine Support",
+    description:
+      "Fully compatible with Stylus, Stylish, and major extension managers.",
+  },
+];
+---
+
+<section class="py-24 border-t border-border bg-background" data-reveal>
+  <div class="container mx-auto px-4 max-w-6xl">
+    <div class="mb-16 text-center">
+      <h2
+        class="text-white text-3xl md:text-5xl font-black mb-6 tracking-tight uppercase"
+      >
+        Key <span class="text-primary">Features.</span>
+      </h2>
+      <p
+        class="text-body text-lg md:text-xl max-w-xl mx-auto leading-relaxed font-medium"
+      >
+        A professional dark mode designed for focus. Simple, fast, and improved
+        readability across all Codeforces pages.
+      </p>
+    </div>
+
+    <!-- Features Grid -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+      {
+        features.map((f) => (
+          <div class="bg-surface border border-border p-8 rounded-xl hover:border-primary/50 transition-all duration-300 group">
+            <h3 class="text-white text-lg font-bold mb-3 tracking-tight uppercase group-hover:text-primary transition-colors">
+              {f.title}
+            </h3>
+            <p class="text-body text-sm leading-relaxed font-semibold">
+              {f.description}
+            </p>
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</section>

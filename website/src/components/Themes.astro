@@ -1,0 +1,196 @@
+---
+const themes = [
+  {
+    id: 0,
+    label: "DEFAULT_MOD",
+    color: "#f5f5f5",
+  },
+  {
+    id: 1,
+    label: "DARK_DEEP",
+    color: "#212121",
+  },
+  {
+    id: 2,
+    label: "NAVY_SLATE",
+    color: "#001523",
+  },
+  {
+    id: 3,
+    label: "DEEP_BROWN",
+    color: "#2f0e07",
+  },
+  {
+    id: 4,
+    label: "GRAPHITE",
+    color: "#141414",
+  },
+  {
+    id: 5,
+    label: "CORE_BLUE",
+    color: "#000b25",
+  },
+  {
+    id: 6,
+    label: "EMERALD",
+    color: "#001b0b",
+  },
+  {
+    id: 7,
+    label: "CYANIDE",
+    color: "#001f29",
+  },
+  {
+    id: 8,
+    label: "MONOKAI",
+    color: "#1e2029",
+  },
+  {
+    id: 9,
+    label: "OLED_BLACK",
+    color: "#142133",
+  },
+];
+---
+
+<section
+  id="themes"
+  class="py-32 border-t border-border bg-background"
+  data-reveal
+>
+  <div class="container mx-auto px-4 max-w-6xl">
+    <div class="text-center mb-20">
+      <h2
+        class="text-white text-4xl md:text-5xl font-black mb-6 tracking-tight uppercase"
+      >
+        <span class="text-primary font-black">10</span> System Themes.
+      </h2>
+      <p
+        class="text-body text-lg md:text-xl max-w-xl mx-auto leading-relaxed font-medium"
+      >
+        Click any module to preview full-size. Every theme is crafted for peak
+        readability during contests.
+      </p>
+    </div>
+
+    <!-- Theme Selection Grid -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      {
+        themes.slice(1).map((theme) => (
+          <button
+            class="theme-card group relative bg-surface border border-border p-6 transition-all duration-300 hover:border-primary/50 text-left rounded-xl shadow-lg"
+            data-theme-id={theme.id}
+            data-theme-label={theme.label}
+          >
+            <div class="flex items-center justify-between mb-4 font-mono text-[9px] font-bold uppercase tracking-widest text-muted">
+              <span>MOD:0{theme.id}</span>
+              <div
+                class="w-3 h-3 rounded-full shadow-[0_0_10px_rgba(255,255,255,0.1)]"
+                style={`background-color: ${theme.color};`}
+              />
+            </div>
+
+            <h3 class="text-white font-black text-xl mb-8 tracking-tight uppercase group-hover:text-primary transition-colors">
+              {theme.label}
+            </h3>
+
+            <div class="relative overflow-hidden border border-border group-hover:border-primary/40 transition-colors rounded-lg">
+              <div class="aspect-video bg-background overflow-hidden relative">
+                <img
+                  src={`/preview_images/theme${theme.id}.png`}
+                  alt={theme.label}
+                  class="w-full h-full object-cover object-top opacity-60 group-hover:opacity-100 transition-opacity"
+                  loading="lazy"
+                />
+                <div class="absolute inset-0 bg-primary/10 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                  <div class="w-12 h-12 bg-white rounded-full flex items-center justify-center translate-y-4 group-hover:translate-y-0 transition-all duration-300">
+                    <i class="ph ph-plus text-black text-xl" />
+                  </div>
+                </div>
+              </div>
+            </div>
+          </button>
+        ))
+      }
+    </div>
+  </div>
+</section>
+
+<!-- Modal -->
+<div
+  id="theme-modal"
+  class="fixed inset-0 z-100 hidden items-center justify-center p-4 md:p-10 bg-black/20 backdrop-blur-xl transition-all duration-300 opacity-0 scale-95"
+>
+  <div class="absolute inset-0 cursor-zoom-out" id="theme-modal-bg"></div>
+
+  <button
+    id="theme-modal-close"
+    class="absolute top-6 right-6 z-110 w-12 h-12 flex items-center justify-center bg-surface border border-white/10 text-white hover:border-primary transition-colors text-2xl rounded-full"
+  >
+    <i class="ph ph-x"></i>
+  </button>
+
+  <div
+    class="relative z-105 max-w-5xl w-10/12 flex flex-col items-center overflow-hidden aspect-video border-4 border-surface rounded-2xl shadow-2xl"
+  >
+    <img
+      id="theme-modal-img"
+      src=""
+      alt="Preview"
+      class="w-full h-full object-cover shadow-black/80"
+    />
+    <div id="theme-modal-label" class="hidden"></div>
+  </div>
+</div>
+
+<script is:inline>
+  (() => {
+    const modal = document.getElementById("theme-modal");
+    const img = document.getElementById("theme-modal-img");
+    const label = document.getElementById("theme-modal-label");
+    const close = document.getElementById("theme-modal-close");
+    const bg = document.getElementById("theme-modal-bg");
+    const cards = document.querySelectorAll(".theme-card");
+
+    if (!modal) return;
+
+    cards.forEach((card) => {
+      card.addEventListener("click", () => {
+        const id = card.getAttribute("data-theme-id");
+        const name = card.getAttribute("data-theme-label");
+
+        img.src = `/preview_images/theme${id}.png`;
+        label.textContent = name;
+
+        modal.classList.remove("hidden");
+        modal.classList.add("flex");
+
+        requestAnimationFrame(() => {
+          modal.classList.remove("opacity-0", "scale-95");
+          modal.classList.add("opacity-100", "scale-100");
+        });
+
+        document.body.style.overflow = "hidden";
+      });
+    });
+
+    const closeModal = () => {
+      modal.classList.add("opacity-0", "scale-95");
+      modal.classList.remove("opacity-100", "scale-100");
+
+      setTimeout(() => {
+        modal.classList.add("hidden");
+        modal.classList.remove("flex");
+        img.src = "";
+      }, 300);
+
+      document.body.style.overflow = "";
+    };
+
+    close.addEventListener("click", closeModal);
+    bg.addEventListener("click", closeModal);
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Escape") closeModal();
+    });
+  })();
+</script>

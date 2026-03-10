@@ -1,0 +1,91 @@
+---
+// Installation.astro - Logical Install Paths
+interface Props {
+  showChromeStore?: boolean;
+}
+const { showChromeStore = false } = Astro.props;
+---
+
+<section
+  id="install"
+  class="py-32 bg-background border-t border-border overflow-hidden relative"
+  data-reveal
+>
+  <div class="container mx-auto px-4 max-w-6xl relative z-10 text-center">
+    <div class="mb-24">
+      <h2
+        class="text-white text-4xl md:text-5xl font-black mb-6 tracking-tight uppercase"
+      >
+        How to
+        <span class="text-primary font-black">Install</span>.
+      </h2>
+      <p
+        class="text-body text-lg md:text-xl max-w-xl mx-auto leading-relaxed font-medium"
+      >
+        Choose your preferred method to install the Codeforces Dark theme.
+        Available on the official store or as direct source code.
+      </p>
+    </div>
+
+    <!-- Installation Grid (Rounded XL - 12px) -->
+    <div
+      class="grid grid-cols-1 md:grid-cols-2 gap-10 max-w-5xl mx-auto text-center"
+    >
+      <!-- Store Method -->
+      {
+        showChromeStore && (
+          <div class="group relative bg-surface border border-border p-12 rounded-xl transition-all duration-500 hover:border-primary/50 shadow-2xl overflow-hidden h-full flex flex-col justify-between">
+            <div class="mb-10">
+              <div class="w-16 h-16 rounded-xl bg-background border border-border flex items-center justify-center mx-auto mb-10 text-3xl text-primary group-hover:scale-110 transition-transform duration-500 shadow-xl">
+                <i class="ph ph-google-chrome-logo" />
+              </div>
+              <h3 class="text-3xl font-black text-white mb-6 uppercase tracking-tight">
+                Chrome Store
+              </h3>
+              <p class="text-[16px] text-body mb-10 leading-relaxed font-bold max-w-sm mx-auto">
+                Official store build. Includes automatic updates and verified
+                performance.
+              </p>
+            </div>
+            <a
+              href="#"
+              class="inline-flex items-center justify-center w-full py-5 rounded-xl font-black text-sm bg-primary text-white transition-all duration-300 hover:bg-body active:scale-95 uppercase tracking-widest shadow-xl"
+            >
+              Direct Install
+            </a>
+          </div>
+        )
+      }
+
+      <!-- Manual Source Method -->
+      <div
+        class="group relative bg-surface border border-border p-12 rounded-xl transition-all duration-500 hover:border-white/20 shadow-2xl overflow-hidden h-full flex flex-col justify-between"
+      >
+        <div class="mb-10">
+          <div
+            class="w-16 h-16 rounded-xl bg-background border border-border flex items-center justify-center mx-auto mb-10 text-3xl text-white group-hover:scale-110 transition-transform duration-500 shadow-xl"
+          >
+            <i class="ph ph-git-branch text-primary"></i>
+          </div>
+          <h3
+            class="text-3xl font-black text-white mb-6 uppercase tracking-tight"
+          >
+            Source Code
+          </h3>
+          <p
+            class="text-[16px] text-body mb-10 leading-relaxed font-bold max-w-sm mx-auto"
+          >
+            Developer source code. Fork the repository and build your own custom
+            theme manually.
+          </p>
+        </div>
+        <a
+          href="https://github.com/developerHub01/CF_Dark"
+          target="_blank"
+          class="inline-flex items-center justify-center w-full py-5 rounded-xl font-black text-sm bg-secondary text-white border border-white/10 transition-all duration-300 hover:bg-surface-hover active:scale-95 uppercase tracking-widest select-none"
+          >VIEW REPOSITORY</a
+        >
+      </div>
+    </div>
+  </div>
+</section>
