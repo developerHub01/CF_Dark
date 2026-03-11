@@ -13,24 +13,30 @@ import "../styles/global.css";
     <meta charset="UTF-8" />
     <meta name="description" content={description} />
     <meta name="viewport" content="width=device-width" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" type="image/png" href="/favicon.png" />
     <title>{title}</title>
 
-    <!-- Inter font -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Outfit:wght@400;700;800;900&display=swap"
-      rel="stylesheet"
-    />
-    <!-- Phosphor Icons -->
-    <script src="https://unpkg.com/@phosphor-icons/web" is:inline></script>
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={Astro.url} />
+    <meta property="og:site_name" content="CF_Dark" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={new URL("/og.png", Astro.url)} />
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content={Astro.url} />
+    <meta property="twitter:title" content={title} />
+    <meta property="twitter:description" content={description} />
+    <meta property="twitter:image" content={new URL("/og.png", Astro.url)} />
+
+    <link rel="canonical" href={Astro.url} />
   </head>
   <body class="bg-background text-body font-sans min-h-screen antialiased">
     <slot />
 
     <script is:inline>
-      // Pure IntersectionObserver scroll reveal — zero deps
       const observer = new IntersectionObserver(
         (entries) => {
           entries.forEach((e) => {

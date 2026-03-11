@@ -1,4 +1,5 @@
 ---
+
 ---
 
 <input type="checkbox" id="comparison-toggle" class="hidden" />
@@ -23,7 +24,7 @@
       </p>
     </div>
 
-    <!-- Browser Layout (Rounded XL - 12px) -->
+    <!-- Browser Layout -->
     <div
       class="bg-surface border border-border p-4 rounded-xl overflow-hidden shadow-2xl relative"
     >
@@ -61,7 +62,7 @@
           draggable="false"
         />
 
-        <!-- Handle Line (Theme Blue) -->
+        <!-- Handle Line -->
         <div
           id="cf-divider"
           class="absolute top-0 bottom-0 left-1/2 w-1 bg-primary shadow-[0_0_20px_rgba(59,130,246,0.3)] -translate-x-1/2 z-20 pointer-events-none"
@@ -78,7 +79,7 @@
   </div>
 
   <script is:inline>
-    (function () {
+    (() => {
       const slider = document.getElementById("cf-slider");
       const before = document.getElementById("cf-img-before");
       const div = document.getElementById("cf-divider");
